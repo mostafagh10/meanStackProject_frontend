@@ -7,15 +7,29 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CategoryService {
 
-  categories !: Array<any>;
-
-  constructor(private http: HttpClient) { 
-    this.http.get('localhost:3000/category').subscribe((data : any) => {
-      this.categories = data;
-    })
-  }
+  // categories !: Array<any>;
+  categories !: BehaviorSubject<Array<any>>;
+  constructor(private http: HttpClient) { }
 
   getCategories() {
-    return this.categories
+    return this.http.get('http://localhost:3000/category');
+  }
+
+  postCategory(category: any) {
+    this.http.post('http://localhost:3000/category', category)
+    .subscribe((data) => console.log(data));
+    window.location.reload();
+  }
+
+  deleteCategory(categoryID: any) {
+    this.http.delete(`http://localhost:3000/category/${categoryID}`)
+    .subscribe((data) => console.log(data));
+    window.location.reload();
+  }
+
+  editCategory(category : any) {
+    this.http.patch(`http://localhost:3000/category/${category._id}`, category)
+    .subscribe((data) => console.log(data))
+    window.location.reload()
   }
 }
