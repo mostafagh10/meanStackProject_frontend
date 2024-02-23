@@ -15,7 +15,7 @@ export class CategoryService {
     return this.http.get('http://localhost:3000/category');
   }
 
-  postCategory(category: any) {
+  addCategory(category: any) {
     this.http.post('http://localhost:3000/category', category)
     .subscribe((data) => console.log(data));
     window.location.reload();
