@@ -1,1 +1,41 @@
-<p>Book Component</p>
+<p>book works!</p>
+<button type="button" 
+class="btn btn-success" 
+data-bs-toggle="modal" 
+data-bs-target="#addBookModal">+</button>
+<table class="w-50 h-50 border border-rounded mt-auto">
+    <tr>
+        <th>book Number</th>
+        <th>book Name</th>
+        <th>categoryId</th>
+        <th>authorId</th>
+        <th>photo</th>
+        <th>actions</th>
+    </tr>
+    @for (book of books; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{book.bookName}}</td>
+            <td>{{book.categoryId}}</td>
+            <td>{{book.authorId}}</td>
+            <td>{{book.photo}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteBook(book._id)" >x</button>
+            </td>
+            <td>   
+                    <button type="button" 
+                    class="btn btn-success" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#editBookModal" (click)="sendBook(book)">#</button>
+            </td>
+        </tr> 
+    }
+</table>
+
+<!-- add book modal -->
+<app-addbook></app-addbook>
+
+<!-- edit book -->
+<div class="modal fade" id="editBookModal" tabindex="-1" aria-labelledby="categoryEditModal" aria-hidden="true">
+    <app-editbook [bookInfo]="currentBook.asObservable()"></app-editbook>
+</div>
