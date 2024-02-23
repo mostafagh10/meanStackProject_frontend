@@ -1,0 +1,37 @@
+<!-- add author modal -->
+<div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="categoryEditModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="categoryEditModal">Add Author</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+<form [formGroup]="bookForm" (ngSubmit)="addBook()">
+    <div class="modal-body">
+        <label for="bookName">book name :</label>
+        <input type="text" name="bookName" class="form-control" formControlName="bookName" >
+        <label for="category">categoryId :</label>
+        <select class="form-control" name="category" formControlName="categoryId">
+            <option value="" disabled selected hidden>Choose the category</option>
+            <option *ngFor="let category of categories" [value]="category._id">
+                {{ category.categoryName }}
+            </option>
+        </select>
+        <label for="author">authorId :</label>
+        <select class="form-control" name="author" formControlName="authorId">
+            <option value='' disabled selected hidden>choose the author</option>
+            <option *ngFor="let author of authors" [value]="author._id">
+                {{ author.firstName + ' ' + author.lastName }}
+            </option>
+        </select>
+        <label for="photo">upload photo :</label>
+        <input type="file" name="photo" class="form-control" formControlName="photo">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+</div>
+</div>
+</div>
