@@ -1,4 +1,7 @@
-<p>admin works!</p>
-<app-category></app-category>
-<app-author></app-author>
-<app-book></app-book>
+<button class="btn btn-success" (click)="showCategories()">Categories</button>
+<button class="btn btn-success" (click)="showBooks()">Books</button>
+<button class="btn btn-success" (click)="showAuthors()">Authors</button>
+<br>
+<app-category id="categoryComponent"></app-category>
+<app-book id="bookComponent" class="hidden"></app-book>
+<app-author id="authorComponent" class="hidden"></app-author>

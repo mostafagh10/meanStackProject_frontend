@@ -1,4 +1,9 @@
-<p>category works!</p>
+<button type="button" 
+                class="btn btn-success" 
+                data-bs-toggle="modal" 
+                data-bs-target="#addModal">
+                +
+            </button>
 <table class="w-50 h-50 border border-rounded mt-auto">
     <tr>
         <th>Category Number</th>
@@ -9,48 +14,20 @@
             <td>{{$index+1}}</td>
             <td>{{category.categoryName}}</td>
             <td>
-                <button class="btn btn-danger" (click)="deleteCategory(category._id)"></button>
+                <button class="btn btn-danger" (click)="deleteCategory(category._id)">x</button>
             </td>
             <td>
                 <button type="button" 
-                (click)="getEditedCategoryData(category)"
+                (click)="sendCategory(category)"
                 class="btn btn-success" 
                 data-bs-toggle="modal" 
-                data-bs-target="#exampleModal"></button>
+                data-bs-target="#editModal">#</button>
             </td>
         </tr>
     }
 </table>
 
+<app-edit-category [categoryObject]="currentCategory.asObservable()"></app-edit-category>
 
-<!-- Button trigger modal -->
-  
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="categoryEditModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="categoryEditModal">Edit Category</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form method="patch" [formGroup]="categoryForm" (ngSubmit)='editCategory()'>
-            <div class="modal-body">
-                <label for="editCategoryName">Category Name:</label>
-                <input type="text" name="editCategoryName" 
-                [value]='editedCategoryObject?.categoryName' formControlName="categoryName">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </form>
-        </div>
-    </div>
-</div>
+<app-add-category></app-add-category>
 
-<form method="post" [formGroup]="categoryForm" (ngSubmit)="handleForm()">
-    <label for="categoryName">Category Name: </label>
-    <input type="text" name="categoryName" class="w-25" formControlName="categoryName">
-    <br>
-    <button type="submit">Submit</button>
-</form>

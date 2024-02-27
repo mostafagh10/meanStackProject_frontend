@@ -1,26 +1,25 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../services/category/category.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { Subject } from 'rxjs';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, EditCategoryComponent, AddCategoryComponent],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
   categories !: Array<any>;
 
-  editedCategoryObject !: any;
+  currentCategory : Subject<any> = new Subject<any>();
 
-  categoryForm : FormGroup;
   
-  constructor (private categoryService:CategoryService){ 
-    this.categoryForm = new FormGroup({
-      categoryName: new FormControl('')
-    })
-  }
+  
+  constructor (private categoryService:CategoryService){ }
   ngOnInit() {
     this.categoryService.getCategories().subscribe((data:any) => this.categories = data);
   }
@@ -29,17 +28,8 @@ export class CategoryComponent {
     this.categoryService.deleteCategory(categoryID)
   }
 
-  handleForm() {
-    this.categoryService.postCategory(this.categoryForm.value)
-  }
-
-  getEditedCategoryData(category : any) {
-    this.editedCategoryObject = category;
-  }
-
-  editCategory() {
-    console.log(this.categoryForm.value)
-    //this.categoryService.editCategory(this.editCategoryForm)
+  sendCategory(category : any) {
+    this.currentCategory.next(category)
   }
 
 }
