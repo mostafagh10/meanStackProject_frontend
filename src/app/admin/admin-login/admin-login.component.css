@@ -1,0 +1,37 @@
+.login-div {
+    width: 25%;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    padding: 50px;
+    box-shadow: 0px 0px 5px 0px rgba(162, 162, 162, 0.5);
+    border-radius: 10px;
+}
+
+.login-div input {
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(206, 212, 218);
+    border-left: .5px solid rgb(206, 212, 218);
+    
+}
+
+.login-div input:active {
+    border-bottom: 1px solid rgb(206, 212, 218);
+    border-left: .5px solid rgb(206, 212, 218);
+}
+
+.login-button{
+    border: none;
+    margin-top: 50px;
+    width: 30%;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px 20px;
+}
+
+
+
