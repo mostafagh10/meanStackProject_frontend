@@ -9,10 +9,10 @@ import { ChangeDetectorRef } from '@angular/core';
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './admin-login.component.html',
+  styleUrl: './admin-login.component.css',
 })
-export class LoginComponent {
+export class AdminLoginComponent {
   constructor(
     private http: HttpClient,
     private router: Router,

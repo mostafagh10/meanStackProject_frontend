@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CategoryService } from '../../../services/category/category.service';
+import { CategoryService } from '../../../services/admin/category/category.service';
 import { Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
