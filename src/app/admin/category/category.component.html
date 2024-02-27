@@ -1,0 +1,33 @@
+<button type="button" 
+                class="btn btn-success" 
+                data-bs-toggle="modal" 
+                data-bs-target="#addModal">
+                +
+            </button>
+<table class="w-50 h-50 border border-rounded mt-auto">
+    <tr>
+        <th>Category Number</th>
+        <th>Category Name</th>
+    </tr>
+    @for (category of categories; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            <td>{{category.categoryName}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteCategory(category._id)">x</button>
+            </td>
+            <td>
+                <button type="button" 
+                (click)="sendCategory(category)"
+                class="btn btn-success" 
+                data-bs-toggle="modal" 
+                data-bs-target="#editModal">#</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<app-edit-category [categoryObject]="currentCategory.asObservable()"></app-edit-category>
+
+<app-add-category></app-add-category>
+
