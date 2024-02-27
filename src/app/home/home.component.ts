@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  isLoggedIn: boolean = false;
+  token: any = localStorage.getItem('token');
   
+  ngOnInit() {
+    this.checkLoggedIn();
+  }
+
+  checkLoggedIn() {
+    const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
+  }
 }

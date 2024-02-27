@@ -21,7 +21,7 @@ export class NavbarComponent {
 
   checkLoggedIn() {
     const token = localStorage.getItem('token');
-    this.isLoggedIn = !!token;
+    this.isLoggedIn = Boolean(token);
   }
 
   logOut() {
