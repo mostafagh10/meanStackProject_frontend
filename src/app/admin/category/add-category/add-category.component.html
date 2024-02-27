@@ -1,1 +1,16 @@
-<p>add-category works!</p>
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="categoryAddModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="categoryEditModal">Edit Category</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+                <label for="categoryName">Category Name: </label>
+                <input type="text" name="categoryName" class="w-25" formControlName="categoryName">
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
