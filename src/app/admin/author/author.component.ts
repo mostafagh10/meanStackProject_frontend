@@ -5,38 +5,22 @@ import { AuthorService } from '../../services/admin/author/author.service';
 import { RouterLink } from '@angular/router';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { Subject } from 'rxjs';
+import { AddAuthorComponent } from './add-author/add-author.component';
 
 @Component({
   selector: 'app-author',
   standalone: true,
-  imports: [ReactiveFormsModule , NgIf,RouterLink,EditAuthorComponent],
+  imports: [ReactiveFormsModule , NgIf,RouterLink,EditAuthorComponent,AddAuthorComponent],
   templateUrl: './author.component.html',
   styleUrl: './author.component.css'
 })
 export class AuthorComponent {
   authors: Array<any> = [];
-  authorForm: FormGroup;
-  authorerrormessage !: String;
-  constructor(private authorService:AuthorService) { 
-    this.authorForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      dateOfBirth: new FormControl(''),
-      photo: new FormControl(''),
-    });
-  }
+  constructor(private authorService:AuthorService) {}
 
   ngOnInit() {
     this.authorService.getAuthors().subscribe((data:any) => {
         this.authors = data;
-    });
-  }
-
-  addAuthor(){
-    this.authorService.postAuthor(this.authorForm.value);
-    this.authorService.errormessage.subscribe(errorMessage => {
-      this.authorerrormessage = errorMessage;
-      console.log(errorMessage);
     });
   }
 
