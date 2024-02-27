@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthorService } from '../../services/author/author.service';
+import { AuthorService } from '../../services/admin/author/author.service';
 import { RouterLink } from '@angular/router';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { Subject } from 'rxjs';
