@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class EditCategoryComponent {
   editedCategoryObject !: any;
+  categoryerrormessage !: String;
 
   @Input() categoryObject !: Observable<any>;
 
@@ -40,5 +41,9 @@ export class EditCategoryComponent {
       categoryName : this.editCategoryForm.value.categoryName
     }
     this.categoryService.editCategory(newCategory)
+    this.categoryService.errormessage.subscribe(errorMessage => {
+      this.categoryerrormessage = errorMessage;
+      console.log(errorMessage);
+    });
   }
 }

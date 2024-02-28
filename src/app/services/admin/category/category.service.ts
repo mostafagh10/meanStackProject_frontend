@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
+  errormessage: Subject<string> = new Subject<string>();
 
   // categories !: Array<any>;
   categories !: BehaviorSubject<Array<any>>;
@@ -17,8 +18,14 @@ export class CategoryService {
 
   addCategory(category: any) {
     this.http.post('http://localhost:3000/category', category)
-    .subscribe((data) => console.log(data));
-    window.location.reload();
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
+    .subscribe((data: any) => {
+      console.log(data);
+      this.errormessage.next('');
+      window.location.reload();
+    });
   }
 
   deleteCategory(categoryID: any) {
@@ -29,7 +36,26 @@ export class CategoryService {
 
   editCategory(category : any) {
     this.http.patch(`http://localhost:3000/category/${category._id}`, category)
-    .subscribe((data) => console.log(data))
-    window.location.reload()
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
+    .subscribe((data: any) => {
+      console.log(data);
+      this.errormessage.next('');
+      window.location.reload();
+    });
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `${error.error.errorMessage}`;
+    }
+    // Set error message
+    this.errormessage.next(errorMessage);
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }
