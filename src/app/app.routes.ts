@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthorComponent } from './admin/author/author.component';
 import { BookComponent } from './admin/book/book.component';
 import { AuthorPageComponent } from './author-page/author-page.component';
+import { CategoryComponent } from './category/category.component';
 
 export const routes: Routes = [
     { 
@@ -50,7 +51,11 @@ export const routes: Routes = [
         component: AuthorPageComponent
     },
     { 
+      path: 'category', 
+      component: CategoryComponent 
+    },
+    { 
         path: '**', 
         component: HomeComponent 
     }
-];
+
