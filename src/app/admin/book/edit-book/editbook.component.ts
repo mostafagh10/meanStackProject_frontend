@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BookService } from '../../../services/book/book.service';
-import { CategoryService } from '../../../services/category/category.service';
-import { AuthorService } from '../../../services/author/author.service';
+import { BookService } from '../../../services/admin/book/book.service';
+import { CategoryService } from '../../../services/admin/category/category.service';
+import { AuthorService } from '../../../services/admin/author/author.service';
 import { NgFor } from '@angular/common';
 
 @Component({

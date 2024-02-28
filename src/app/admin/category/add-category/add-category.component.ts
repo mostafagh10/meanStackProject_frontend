@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../../../services/category/category.service';
+import { CategoryService } from '../../../services/admin/category/category.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class AddCategoryComponent {
   
   categoryForm : FormGroup;
+  categoryerrormessage !: String;
+
 
   constructor (private categoryService:CategoryService){ 
     this.categoryForm = new FormGroup({
@@ -21,5 +23,9 @@ export class AddCategoryComponent {
 
   addCategory() {
     this.categoryService.addCategory(this.categoryForm.value)
+    this.categoryService.errormessage.subscribe(errorMessage => {
+      this.categoryerrormessage = errorMessage;
+      console.log(errorMessage);
+    });
   }
 }

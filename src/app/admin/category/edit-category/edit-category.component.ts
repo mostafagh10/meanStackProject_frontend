@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CategoryService } from '../../../services/category/category.service';
+import { CategoryService } from '../../../services/admin/category/category.service';
 import { Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class EditCategoryComponent {
   editedCategoryObject !: any;
+  categoryerrormessage !: String;
 
   @Input() categoryObject !: Observable<any>;
 
@@ -40,5 +41,9 @@ export class EditCategoryComponent {
       categoryName : this.editCategoryForm.value.categoryName
     }
     this.categoryService.editCategory(newCategory)
+    this.categoryService.errormessage.subscribe(errorMessage => {
+      this.categoryerrormessage = errorMessage;
+      console.log(errorMessage);
+    });
   }
 }

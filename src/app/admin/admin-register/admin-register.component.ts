@@ -12,10 +12,10 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-register',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  templateUrl: './admin-register.component.html',
+  styleUrl: './admin-register.component.css',
 })
-export class RegisterComponent {
+export class AdminRegisterComponent {
   registerForm: FormGroup;
 
   ngOnInit(){

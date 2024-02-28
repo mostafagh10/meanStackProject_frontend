@@ -1,68 +1,36 @@
 <button type="button" 
 class="btn btn-success" 
 data-bs-toggle="modal" 
-data-bs-target="#addAuthorModal">+</button>
-<table class="w-50 h-50 border border-rounded mt-auto">
-    <tr>
-        <th>author Number</th>
-        <th>author Name</th>
-        <th>date of birth</th>
-        <th>photo</th>
-        <th>actions</th>
+data-bs-target="#addAuthorModal"><i class="fas fa-plus" style="font-size: 20px"></i></button>
+<table class="w-100 border border-rounded mt-auto">
+    <tr class="text-center">
+        <th>Number</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Photo</th>
+        <th>Actions</th>
     </tr>
     @for (author of authors; track $index) {
-        <tr>
+        <tr class="text-center">
             <td>{{$index+1}}</td>
             <td>{{author.firstName + ' ' + author.lastName}}</td>
             <td>{{author.dateOfBirth}}</td>
             <td>{{author.photo}}</td>
-            <td>
-                <button class="btn btn-danger" (click)="deleteAuthor(author._id)" >x</button>
-            </td>
-            <td>   
-                    <button type="button" 
+            <td class="d-flex justify-content-evenly">
+                <button class="btn btn-danger" (click)="deleteAuthor(author._id)" ><i class="fas fa-trash-can"></i></button>
+                <button type="button" 
                     class="btn btn-success" 
                     data-bs-toggle="modal" 
-                    data-bs-target="#editAuthorModal" (click)="sendauthor(author)">#</button>
+                    data-bs-target="#editAuthorModal" (click)="sendauthor(author)"><i class="fas fa-pencil"></i></button>
             </td>
         </tr> 
     }
 </table>
 
 <!-- add author modal -->
-<div class="modal fade" id="addAuthorModal" tabindex="-1" aria-labelledby="categoryEditModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="categoryEditModal">Add Author</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-<form [formGroup]="authorForm" (ngSubmit)="addAuthor()">
-    @if (authorerrormessage){
-    <div class="alert alert-danger text-center">{{authorerrormessage}}</div>
-    }
-    <div class="modal-body">
-        <label for="firstName">author firstName :</label>
-        <input type="text" name="firstName" class="form-control" formControlName="firstName" >
-        <label for="lastName">author lastName :</label>
-        <input type="text" name="lastName" class="form-control" formControlName="lastName">
-        <label for="dateOfBirth">author date of birth :</label>
-        <input type="date" name="dateOfBirth" class="form-control" formControlName="dateOfBirth">
-        <label for="photo">upload photo :</label>
-        <input type="file" name="photo" class="form-control" formControlName="photo">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-    </div>
-</form>
-</div>
-</div>
-</div>
+<app-add-author></app-add-author>
 
  <!-- edit author -->
  <div class="modal fade" id="editAuthorModal" tabindex="-1" aria-labelledby="categoryEditModal" aria-hidden="true">
     <app-edit-author [authorinfo]="currentauthor.asObservable()"></app-edit-author>
 </div>
-
-
