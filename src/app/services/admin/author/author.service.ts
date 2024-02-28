@@ -35,8 +35,14 @@ export class AuthorService {
 
   editAuthor(authorId: any,author:any) {
     this.http.patch(`http://localhost:3000/author/${authorId}`, author)
-      .subscribe((data) => console.log(data));
-    window.location.reload();
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
+    .subscribe((data: any) => {
+      console.log(data);
+      this.errormessage.next('');
+      window.location.reload();
+    });
   }
 
   private handleError(error: HttpErrorResponse) {
