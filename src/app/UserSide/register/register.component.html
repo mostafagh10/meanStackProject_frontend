@@ -1,0 +1,121 @@
+<div class="register-div">
+    <h4
+      class="d-flex justify-content-center mb-4"
+      style="font-family: Arial, Helvetica, sans-serif"
+    >
+      Create an account.
+    </h4>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="handlesubmit()"
+      class="register-form"
+    >
+    <div class="mb-3">
+      <label for="name" class="form-label">First name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="nameHelp"
+        formControlName="firstName"
+      />
+      <!-- @if(registerForm.controls['Firstname'].invalid && registerForm.controls['Firstname'].touched){
+        <div id="nameHelp" class="form-text text-danger">
+            @if(registerForm.controls['Firstname'].errors?.['required']){
+                <small>First name is required.</small>
+            }
+        </div>
+      } -->
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="nameHelp"
+        formControlName="lastName"
+      />
+      <!-- @if(registerForm.controls['Lastname'].invalid && registerForm.controls['Lastname'].touched){
+        <div id="nameHelp" class="form-text text-danger">
+            @if(registerForm.controls['Lastname'].errors?.['required']){
+                <small>Last name is required.</small>
+            }
+        </div>
+      } -->
+    </div>
+
+      
+
+      <div class="mb-3">
+        <label for="userName" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          aria-describedby="usernameHelp"
+          formControlName="userName"
+          
+        />
+        <!-- @if(registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched){
+          <div id="nameHelp" class="form-text text-danger">
+              @if(registerForm.controls['userName'].errors?.['required']){
+                  <small>Username is required.</small>
+              }
+          </div>
+        } -->
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+        
+        <!-- @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched){
+          <div id="passwordHelp" class="form-text text-danger">
+              @if(registerForm.controls['password'].errors?.['required']){
+                  <small>password required !</small>
+              }
+              @if(registerForm.controls['password'].errors?.['pattern']){
+                <small>Invalid password format ,password length not less
+                  than 8 characters , contains at least one
+                  lowercase , one uppercase , at least one digit
+                  and special character </small>
+              }
+          </div>
+          } -->
+          
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmpassword" class="form-label">confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmpassword"
+          formControlName="retypePassword"
+        />
+        <!-- @if(registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched){
+          <div id="passwordHelp" class="form-text text-danger">
+              @if(registerForm.controls['confirmpassword'].errors?.['required']){
+                  <small>Re-enter your password</small>
+              }
+              @if(registerForm.controls['confirmpassword'].errors?.["mismatch"]){
+                <div class="alert alert-danger">password doesn't match </div>
+            }
+          </div>
+          } -->
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+      <div class="d-flex justify-content-center mt-5">
+        <p>Already have an account !</p>
+        <a class="nav-link" routerLink="/login">Login</a>
+      </div>
+    </form>
+  </div>
+  

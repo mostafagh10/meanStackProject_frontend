@@ -1,1 +1,38 @@
-<p>category works!</p>
+		
+		<br> <br> 
+		<!-- Start Popular Product -->
+		<div class="popular-product">
+			<div class="container">
+				<div class="row">
+
+					@for (category of data; track $index) {
+						
+						<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+							<div class="product-item-sm d-flex">
+								<div class="thumbnail">
+									<img src="assets/images/category.png" alt="Image" class="img-fluid">
+								</div>
+								<div class="pt-3">
+									<h3>{{category.categoryName}}</h3>
+									<p><a href="#">Read More</a></p>
+								</div>
+							</div>
+						</div>
+					
+					}
+						
+					
+				</div>
+			</div>
+		</div>
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>
+		<!-- End Popular Product -->
