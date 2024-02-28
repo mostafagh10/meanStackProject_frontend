@@ -42,7 +42,7 @@ export class LoginComponent {
           const payload = JSON.parse(atob(tokenParts[1]));
           const id = payload.adminId;
           console.log('Admin ID:', id);
-          this.router.navigate(['/home']).then(() => {
+          this.router.navigate(['/admin']).then(() => {
             window.location.reload();
           });
         },

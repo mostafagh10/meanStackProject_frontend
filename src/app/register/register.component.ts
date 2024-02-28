@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -21,7 +21,10 @@ export class RegisterComponent {
   ngOnInit(){
     console.log(localStorage.getItem("token"));
   }
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) {
     this.registerForm = new FormGroup({
       Firstname: new FormControl('', [Validators.required]),
       Lastname: new FormControl('', [Validators.required]),
@@ -45,7 +48,7 @@ export class RegisterComponent {
     this.http.post<any>('http://localhost:3000/admin/', formData).subscribe({
       next: response => {
         console.log('Form data saved:', response);
-        
+        this.router.navigate(['/admin']).then();
       },
       error: error => {
         console.error('Error saving form data:', error);
