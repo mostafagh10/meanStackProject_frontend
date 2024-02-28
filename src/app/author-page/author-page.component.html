@@ -1,0 +1,10 @@
+<p>author-page works!</p>
+<p>Author name : {{ this.currentAuthor.firstName }}</p>
+<br>
+<fieldset>
+    <legend>Author Books:</legend>
+    @for (book of authorBooks; track $index) {
+        <p>{{book.bookName}}</p>
+    }
+    
+</fieldset>
