@@ -9,12 +9,11 @@
 
             <div class="row">
                 @for(author of pagedAuthors ; track $index) {
-
                 <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                     <div class="post-entry">
                         <a href="#" class="post-thumbnail"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS3bDP-AbnH7l2pjO-SwJkEFQu9dxDE6V8wyJ_5x_lfkVpTMA80" alt="Image" class="img-fluid"></a>
                         <div class="post-content-entry">
-                            <h3><a href="#">{{author.firstName + ' ' + author.lastName}}</a></h3>
+                            <h3><a [routerLink]="'/authors/' + author._id">{{author.firstName + ' ' + author.lastName}}</a></h3>
                         </div>
                     </div>
                 </div>
