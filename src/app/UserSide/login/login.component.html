@@ -1,4 +1,4 @@
-<div class="login-div">
+<div class="login-div" style="width: 500px;">
   <h4
     class="d-flex justify-content-center mb-4"
     style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
@@ -25,13 +25,13 @@
         #userName="ngModel"
       />
 
-      @if(userName.invalid && userName.touched){
+      <!-- @if(userName.invalid && userName.touched){
         <div id="usernamehelp" class="form-text text-danger">
             @if(userName.errors?.['required']){
                 <small>you can't leave username empty</small>
             }
         </div>
-      }
+      } -->
       
     </div>
     <div class="mb-3">
@@ -47,16 +47,16 @@
         #password="ngModel"
       />
 
-      @if(password.invalid && password.touched){
+      <!-- @if(password.invalid && password.touched){
         <div id="passwordHelp" class="form-text text-danger">
             @if(password.errors?.['required']){
                 <small>password required !</small>
             }
         </div>
-        }
+        } -->
         
     </div>
-    <button type="submit" class="btn btn-primary login-button" [disabled]="loginForm.invalid">
+    <button type="submit" class="btn btn-primary login-button">
       Login
     </button>
   </form>

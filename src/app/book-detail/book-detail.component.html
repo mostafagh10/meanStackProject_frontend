@@ -54,7 +54,7 @@
 				@for (book of bookDetails.reviews; track $index) {
 					<tr>
 						
-						<td colspan="6">{{book.user}}</td>
+						<td rowspan="">{{book.user}}</td>
 						@for (singleReview of book.reviews; track $index) {
 							<td>{{singleReview}}</td>
 						}

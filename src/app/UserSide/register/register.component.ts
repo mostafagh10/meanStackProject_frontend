@@ -26,29 +26,29 @@ export class RegisterComponent {
     private router: Router
     ) {
     this.registerForm = new FormGroup({
-      Firstname: new FormControl('', [Validators.required]),
-      Lastname: new FormControl('', [Validators.required]),
       userName: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\S+$/),
       ]),
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
         ),
       ]),
-      confirmpassword: new FormControl ('', [Validators.required])
+      retypePassword: new FormControl ('', [Validators.required])
     });
   }
 
   handlesubmit(){
-    console.log(this.registerForm.value);
     const formData = this.registerForm.value;
-    this.http.post<any>('http://localhost:3000/admin/', formData).subscribe({
+    console.log(formData);
+    this.http.post<any>('http://127.0.0.1:3000/user/register/', formData).subscribe({
       next: response => {
         console.log('Form data saved:', response);
-        this.router.navigate(['/admin']).then();
+        this.router.navigate(['/']).then();
       },
       error: error => {
         console.error('Error saving form data:', error);

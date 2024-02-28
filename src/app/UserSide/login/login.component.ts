@@ -30,19 +30,24 @@ export class LoginComponent {
   handleLogin(form: any) {
     const formData = form.value;
     this.http
-      .post<any>('http://localhost:3000/admin/login', formData)
+      .post<any>('http://127.0.0.1:3000/user/login', formData)
       .subscribe({
         next: (response) => {
           console.log('Form data saved:', response.token);
+          
           localStorage.setItem('token', response.token);
           this.checkLoggedIn();
+          
           console.log('logged In  ----> ' + this.isLoggedIn);
+          
           const jwtToken = response.token;
           const tokenParts = jwtToken.split('.');
           const payload = JSON.parse(atob(tokenParts[1]));
-          const id = payload.adminId;
-          console.log('Admin ID:', id);
-          this.router.navigate(['/admin']).then(() => {
+          const id = payload._id;
+          
+          console.log('User ID:', id);
+          
+          this.router.navigate(['/']).then(() => {
             window.location.reload();
           });
         },

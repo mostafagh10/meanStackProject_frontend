@@ -33,8 +33,7 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/custom.js",
-              "src/assets/js/tiny-slider.js",
-              "node_modules/@fontawesome/fontawesome-free/css/all.min.css"
+              "src/assets/js/tiny-slider.js"
             ]
           },
           "configurations": {

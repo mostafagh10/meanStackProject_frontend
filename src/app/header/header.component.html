@@ -2,13 +2,16 @@
 <!-- Start Header/Navigation -->
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
 	arial-label="Furni navigation bar">
-	
+
 	<div class="container">
-		<a class="navbar-brand" href="index.html" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Good Reads<span>.</span></a>
+		<a class="navbar-brand" href="index.html" routerLink="/"
+			routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Good
+			Reads<span>.</span></a>
 
 		<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
+			<input class="form-control mr-sm-2" type="search" placeholder="Search"
+				aria-label="Search">
+		</form>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarsFurni" aria-controls="navbarsFurni"
@@ -18,32 +21,43 @@
 
 		<div class="collapse navbar-collapse" id="navbarsFurni">
 			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-				
+
 				<li class="nav-item">
-					<a class="nav-link" href="index.html" routerLink="" 
-          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+					<a class="nav-link" routerLink=""
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Home</a>
 				</li>
 
 				<li>
-					<a class="nav-link" href="shop.html" routerLink="categories"
+					<a class="nav-link" routerLink="categories"
 						routerLinkActive="active"
 						[routerLinkActiveOptions]="{exact: true}">Categories</a></li>
 
 				<li>
-					<a class="nav-link" href="about.html" routerLink="books" 
-          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Books</a></li>
+					<a class="nav-link" routerLink="books"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Books</a></li>
 
-				<li><a class="nav-link" href="services.html" routerLink="authors"
+				<li><a class="nav-link" routerLink="authors"
 						routerLinkActive="active"
 						[routerLinkActiveOptions]="{exact: true}">Authors</a></li>
-			
+
+				<li><a class="nav-link" routerLink="register"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Register</a></li>
+
 			</ul>
 
 			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 				<!-- <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li> -->
-				<li style="color: white;"><a class="nav-link" href="#"><img width="40" height="40" src="assets/images/login.png"></a></li>
-				<li style="color: white;"><a class="nav-link" href="#"><img width="50" height="40" src="assets/images/exit.png"></a></li>
-				<!-- <li><a class="nav-link" href="#"><img src="assets/images/logout.svg"></a></li> -->
+				<li style="color: white;"><a class="nav-link" routerLink="login"><img width="40"
+							height="40" src="assets/images/login.png"></a></li>
+
+				<li style="color: white;"><a class="nav-link" (click)="logOut()"><img width="50"
+							height="40" src="assets/images/exit.png"></a></li>
+				
+							
+							<!-- <li><a class="nav-link" href="#"><img src="assets/images/logout.svg"></a></li> -->
 			</ul>
 		</div>
 	</div>

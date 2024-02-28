@@ -10,6 +10,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { AdminRegisterComponent } from './admin/admin-register/admin-register.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { RegisterComponent } from './UserSide/register/register.component';
+import { LoginComponent } from './UserSide/login/login.component';
 
 export const routes: Routes = [
  
@@ -17,6 +19,16 @@ export const routes: Routes = [
         path: "",
         component: HomeComponent,
         title: "Home"
+    },
+    {
+        path: "register",
+        component: RegisterComponent,
+        title: "Register a new account"
+    },
+    {
+        path: "login",
+        component: LoginComponent,
+        title: "Login to your profile"
     },
     {
         path: "authors",
@@ -38,10 +50,6 @@ export const routes: Routes = [
         component: CategoryComponent,
         title: "Categories"
     },
-    {
-        path: "**",
-        component: NotfoundComponent
-    },
     { 
         path: 'admin/login', 
         component: AdminLoginComponent
@@ -51,12 +59,8 @@ export const routes: Routes = [
         component: AdminRegisterComponent
     },
     { 
-        path: 'home', 
-        component: HomeComponent 
-    },
-    { 
         path: 'authors',
-         component: AuthorsComponent 
+        component: AuthorsComponent 
     },
     {
         path: 'admin',
@@ -78,11 +82,11 @@ export const routes: Routes = [
         component: AuthorPageComponent
     },
     { 
-      path: 'category', 
-      component: CategoryComponent 
+        path: 'category', 
+        component: CategoryComponent 
     },
-    { 
-        path: '**', 
-        component: HomeComponent 
+    {
+        path: "**",
+        component: NotfoundComponent
     }
 ];

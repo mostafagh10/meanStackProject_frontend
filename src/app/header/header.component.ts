@@ -17,4 +17,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class HeaderComponent {
 
+  token: any = localStorage.getItem('token');
+  
+  logOut() {
+    this.token = localStorage.removeItem('token');
+  }
 }

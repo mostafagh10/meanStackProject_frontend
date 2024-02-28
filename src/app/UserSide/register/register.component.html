@@ -12,36 +12,36 @@
     <div class="mb-3">
       <label for="name" class="form-label">First name</label>
       <input
-        type="name"
+        type="text"
         class="form-control"
         id="name"
         aria-describedby="nameHelp"
-        formControlName="Firstname"
+        formControlName="firstName"
       />
-      @if(registerForm.controls['Firstname'].invalid && registerForm.controls['Firstname'].touched){
+      <!-- @if(registerForm.controls['Firstname'].invalid && registerForm.controls['Firstname'].touched){
         <div id="nameHelp" class="form-text text-danger">
             @if(registerForm.controls['Firstname'].errors?.['required']){
                 <small>First name is required.</small>
             }
         </div>
-      }
+      } -->
     </div>
     <div class="mb-3">
       <label for="name" class="form-label">Last name</label>
       <input
-        type="name"
+        type="text"
         class="form-control"
         id="name"
         aria-describedby="nameHelp"
-        formControlName="Lastname"
+        formControlName="lastName"
       />
-      @if(registerForm.controls['Lastname'].invalid && registerForm.controls['Lastname'].touched){
+      <!-- @if(registerForm.controls['Lastname'].invalid && registerForm.controls['Lastname'].touched){
         <div id="nameHelp" class="form-text text-danger">
             @if(registerForm.controls['Lastname'].errors?.['required']){
                 <small>Last name is required.</small>
             }
         </div>
-      }
+      } -->
     </div>
 
       
@@ -49,20 +49,20 @@
       <div class="mb-3">
         <label for="userName" class="form-label">Username</label>
         <input
-          type="name"
+          type="text"
           class="form-control"
           id="username"
           aria-describedby="usernameHelp"
           formControlName="userName"
           
         />
-        @if(registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched){
+        <!-- @if(registerForm.controls['userName'].invalid && registerForm.controls['userName'].touched){
           <div id="nameHelp" class="form-text text-danger">
               @if(registerForm.controls['userName'].errors?.['required']){
                   <small>Username is required.</small>
               }
           </div>
-        }
+        } -->
       </div>
 
       <div class="mb-3">
@@ -74,7 +74,7 @@
           formControlName="password"
         />
         
-        @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched){
+        <!-- @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched){
           <div id="passwordHelp" class="form-text text-danger">
               @if(registerForm.controls['password'].errors?.['required']){
                   <small>password required !</small>
@@ -86,7 +86,7 @@
                   and special character </small>
               }
           </div>
-          }
+          } -->
           
       </div>
 
@@ -96,10 +96,9 @@
           type="password"
           class="form-control"
           id="confirmpassword"
-          formControlName="confirmpassword"
-          (change)="validatePasswordConfirmation()"
+          formControlName="retypePassword"
         />
-        @if(registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched){
+        <!-- @if(registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched){
           <div id="passwordHelp" class="form-text text-danger">
               @if(registerForm.controls['confirmpassword'].errors?.['required']){
                   <small>Re-enter your password</small>
@@ -108,9 +107,9 @@
                 <div class="alert alert-danger">password doesn't match </div>
             }
           </div>
-          }
+          } -->
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+      <button type="submit" class="btn btn-primary">
         Submit
       </button>
       <div class="d-flex justify-content-center mt-5">
