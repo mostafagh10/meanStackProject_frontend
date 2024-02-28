@@ -5,10 +5,13 @@
                 <h1 class="modal-title fs-5" id="categoryEditModal">Edit Category</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            @if(categoryerrormessage){
+                <div class="alert alert-danger text-center">{{categoryerrormessage}}</div>
+            }
             <form method="patch" [formGroup]="editCategoryForm" (ngSubmit)="handleForm()">
                 <div class="modal-body">
                     <label for="editCategoryName">Category Name:</label>
-                    <input type="text" name="editCategoryName" 
+                    <input type="text" name="editCategoryName" class="form-control" 
                     [value]='editedCategoryObject?.categoryName' formControlName="categoryName">
                 </div>
                 <div class="modal-footer">

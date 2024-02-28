@@ -4,6 +4,9 @@
         <h1 class="modal-title fs-5" id="categoryEditModal">edit Author</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    @if(authorerrormessage){
+        <div class="alert alert-danger text-center">{{authorerrormessage}}</div>
+    }
 <form [formGroup]="editauthorForm" (ngSubmit)="editAuthor()">
 <div class="modal-body">
     <label for="firstName">author firstName :</label>
