@@ -7,6 +7,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorComponent } from './admin/author/author.component';
 import { BookComponent } from './admin/book/book.component';
+import { AuthorPageComponent } from './author-page/author-page.component';
 
 export const routes: Routes = [
     { 
@@ -43,6 +44,10 @@ export const routes: Routes = [
         path: 'admin/book',
         component: BookComponent,
         title: 'book'
+    },
+    {
+        path: 'authors/:id',
+        component: AuthorPageComponent
     },
     { 
         path: '**', 
