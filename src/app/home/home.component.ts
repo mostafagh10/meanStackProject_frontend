@@ -15,6 +15,17 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent{
 
+export class HomeComponent {
+  isLoggedIn: boolean = false;
+  token: any = localStorage.getItem('token');
+  
+  ngOnInit() {
+    this.checkLoggedIn();
+  }
+
+  checkLoggedIn() {
+    const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
+  }
 }

@@ -1,0 +1,24 @@
+{{ this.checkLogin() }}
+<div class="w-75 mx-auto bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <button class="btn btn-success" (click)="showCategories()">Categories</button>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <button class="btn btn-success" (click)="showBooks()">Books</button>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <button class="btn btn-success" (click)="showAuthors()">Authors</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <br>
+    <app-category id="categoryComponent"></app-category>
+    <app-book id="bookComponent" class="hidden"></app-book>
+    <app-author id="authorComponent" class="hidden"></app-author>
+</div>
+

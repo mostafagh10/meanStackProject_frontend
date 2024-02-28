@@ -1,0 +1,27 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="categoryEditModal">edit Author</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    @if(authorerrormessage){
+        <div class="alert alert-danger text-center">{{authorerrormessage}}</div>
+    }
+<form [formGroup]="editauthorForm" (ngSubmit)="editAuthor()">
+<div class="modal-body">
+    <label for="firstName">author firstName :</label>
+    <input type="text" name="firstName"  class="form-control" [value]="currentAuthor?.firstName" formControlName="firstName" >
+    <label for="lastName">author lastName :</label>
+    <input type="text" name="lastName"  class="form-control" formControlName="lastName">
+    <label for="dateOfBirth">author date of birth :</label>
+    <input type="date" name="dateOfBirth"  class="form-control" formControlName="dateOfBirth">
+    <label for="photo">upload photo :</label>
+    <input type="file" name="photo"  class="form-control" formControlName="photo">
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+</form>
+</div>
+</div>

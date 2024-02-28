@@ -1,1 +1,136 @@
-	<p> home page </p>
+@if (!isLoggedIn) {
+
+    <section class="welcome-message">
+        <div class="container" style="
+         
+        box-sizing: border-box;
+        background-color: #f8f9fa;
+        padding: 50px 0;
+        text-align: center;
+        width: 100%;
+        ">
+          <h1>Welcome to Your Website!</h1>
+          <p>Embark on a literary journey with us as we explore captivating stories, enlightening non-fiction, and timeless classics. Whether you're a seasoned bookworm or just starting your reading adventure, our curated collection has something for everyone. Dive into worlds of imagination, broaden your horizons, and discover the joy of reading. Happy exploring!</p>
+        </div>
+      </section>
+
+    <div class="product-section">
+        <div class="container">
+            <div class="row">
+                <!-- Start Column 1 -->
+                <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+                    <h2 class="mb-4 section-title">Popular Books</h2>
+                    <p class="mb-4">Discover our popular books! From gripping thrillers to heartwarming tales, explore captivating stories and timeless classics. Find your next great read today!</p>
+                    <p><a href="shop.html" class="btn">Explore</a></p>
+                </div> 
+                <!-- End Column 1 -->
+                <!-- Start Column 2 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="cart.html">
+                        <img src="https://prodimage.images-bn.com/pimages/9780618260591_p0_v2_s1200x630.jpg" class="img-fluid product-thumbnail">
+                        <h3 class="product-title">The Two Towers: Lord of the Rings, Book 2</h3>
+                        <strong class="product-price">$37.00</strong>
+
+                        <span class="icon-cross">
+                            <img src="images/cross.svg" class="img-fluid">
+                        </span>
+                    </a>
+                </div> 
+                <!-- End Column 2 -->
+
+                <!-- Start Column 3 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="cart.html">
+                        <img src="https://m.media-amazon.com/images/I/81YkqyaFVEL._AC_UF1000,1000_QL80_.jpg" class="img-fluid product-thumbnail">
+                        <h3 class="product-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
+                        <strong class="product-price">$39.20</strong>
+
+                        <span class="icon-cross">
+                            <img src="images/cross.svg" class="img-fluid">
+                        </span>
+                    </a>
+                </div>
+                <!-- End Column 3 -->
+
+                <!-- Start Column 4 -->
+                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                    <a class="product-item" href="cart.html">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8axnbfXTmH9PdS0x_wwcRc0aU0eH-LAYdkLqRyiCfog&s" class="img-fluid product-thumbnail">
+                        <h3 class="product-title">Rich Dad Poor Dad: What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!</h3>
+                        <strong class="product-price">$6.39</strong>
+                        <span class="icon-cross">
+                            <img src="images/cross.svg" class="img-fluid">
+                        </span>
+                    </a>
+                </div>
+                <!-- End Column 4 -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-6">
+						<h2 class="section-title">Popular Authors</h2>
+					</div>
+					<div class="col-md-6 text-start text-md-end">
+						<a href="/authors" class="more">View All Authors</a>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNn6FcqJgnTCBDjX9vK_qRnle-dHO1Jp7uEEqISfNOm8bbjoW" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Stephen King</a></h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS3bDP-AbnH7l2pjO-SwJkEFQu9dxDE6V8wyJ_5x_lfkVpTMA80" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">J. K. Rowling</a></h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRZWkYKxRmvp29kWgKsvBWSBDrxWK_OpPEFs9yMP7doszUewZvH" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Margaret Atwood</a></h3>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
+
+}@else {
+    <div  class="text-center">
+        <h3>personal page here !!!!!!!!</h3>
+    </div>
+}
+
+
+
+<ul class="footer-nav">
+    <li class="footer-nav-item">
+      <a class="footer-nav-link" href="#">About Us</a>
+    </li>
+    <li class="footer-nav-item">
+      <a class="footer-nav-link" href="#">Contact Us</a>
+    </li>
+    <li class="footer-nav-item">
+      <a class="footer-nav-link" href="#">Policies</a>
+    </li>
+</ul>
