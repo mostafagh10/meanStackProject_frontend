@@ -4,6 +4,7 @@ import { AuthorComponent } from './author/author.component';
 import { CategoryComponent } from './category/category.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BookComponent } from './book/book.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 export const routes: Routes = [
  
@@ -22,6 +23,11 @@ export const routes: Routes = [
           component: BookComponent,
           title: "Books"
         },
+        {
+            path: "books/:id",
+            component: BookDetailComponent,
+            title: "Book Detail"
+          },
         {
             path: "categories",
             component: CategoryComponent,

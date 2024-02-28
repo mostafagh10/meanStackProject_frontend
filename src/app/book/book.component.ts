@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../services/books/books.service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -15,12 +15,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class BookComponent {
 
   data: any;
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private routeObj : Router) { }
 
  ngOnInit(): void{
      this.booksService.getData().subscribe(books => {
        this.data = books
      });
  }
+
+ view(id: number){
+  this.routeObj.navigate(['books', id])
+}
  
 }

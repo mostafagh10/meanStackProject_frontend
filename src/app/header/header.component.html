@@ -2,9 +2,13 @@
 <!-- Start Header/Navigation -->
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
 	arial-label="Furni navigation bar">
-
+	
 	<div class="container">
 		<a class="navbar-brand" href="index.html" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Good Reads<span>.</span></a>
+
+		<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarsFurni" aria-controls="navbarsFurni"
@@ -36,9 +40,10 @@
 			</ul>
 
 			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-				<li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li>
-				<li><a class="nav-link" href="cart.html"><span
-							src="assets/images/logout.svg"></span></a></li>
+				<!-- <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li> -->
+				<li style="color: white;"><a class="nav-link" href="#"><img width="40" height="40" src="assets/images/login.png"></a></li>
+				<li style="color: white;"><a class="nav-link" href="#"><img width="50" height="40" src="assets/images/exit.png"></a></li>
+				<!-- <li><a class="nav-link" href="#"><img src="assets/images/logout.svg"></a></li> -->
 			</ul>
 		</div>
 	</div>
