@@ -1,0 +1,33 @@
+<div class="untree_co-section product-section before-footer-section">
+  <div class="container">
+      <div class="row">
+
+            @for (book of data; track $index) {
+            
+               <div class="col-12 col-md-4 col-lg-3 mb-5">
+                  <div class="product-item">
+                     <img src="assets/images/test.jpg" class="img-fluid product-thumbnail">
+                     <h3 class="product-title"> {{ book.bookName }} </h3>                           
+                     <span class="icon-cross">
+                        <img src="assets/images/cross.svg" class="img-fluid">
+                     </span>
+                     <button type="button" (click)="view(book._id)" class="button button-a button-small">View</button>
+                  </div>
+               </div> 
+               
+            }
+
+      </div>
+  </div>
+</div>
+
+<nav aria-label="Page navigation example">
+   <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+   </ul>
+</nav>
+
