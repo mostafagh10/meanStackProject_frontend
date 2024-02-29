@@ -56,7 +56,6 @@ export class AdminRegisterComponent {
       next: response => {
         this.errormessage = '';
         this.successmessage = 'new admin saved successfully ..'
-        console.log('Form data saved:', response);
         this.registerForm.reset();
       },
       error: error => {
@@ -83,10 +82,8 @@ export class AdminRegisterComponent {
     } else {
       errorMessage = `${error.error.errorMessage}`;
     }
-    // Set error message
     this.errormessage = errorMessage;
     this.successmessage = '';
-    console.error("the error : ",errorMessage);
     return throwError(errorMessage);
   }
 

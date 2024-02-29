@@ -22,7 +22,6 @@ export class CategoryService {
       catchError(this.handleError.bind(this))
     )
     .subscribe((data: any) => {
-      console.log(data);
       this.errormessage.next('');
       window.location.reload();
     });
@@ -40,7 +39,6 @@ export class CategoryService {
       catchError(this.handleError.bind(this))
     )
     .subscribe((data: any) => {
-      console.log(data);
       this.errormessage.next('');
       window.location.reload();
     });
@@ -53,9 +51,7 @@ export class CategoryService {
     } else {
       errorMessage = `${error.error.errorMessage}`;
     }
-    // Set error message
     this.errormessage.next(errorMessage);
-    console.error(errorMessage);
     return throwError(errorMessage);
   }
 }

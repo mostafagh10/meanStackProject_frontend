@@ -26,7 +26,6 @@ export class EditAuthorComponent {
 
   ngOnInit(){
     this.authorinfo.subscribe((data:any) => {
-      console.log(data);
       this.currentAuthor = data;
       this.editauthorForm.patchValue({
         firstName: data.firstName,
@@ -45,7 +44,6 @@ export class EditAuthorComponent {
     this.authorService.editAuthor(this.currentAuthor._id,this.editauthorForm.value);
     this.authorService.errormessage.subscribe(errorMessage => {
       this.authorerrormessage = errorMessage;
-      console.log(errorMessage);
     });
   }
 

@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { AuthorPageService } from '../services/user/author-page.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-author-page',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './author-page.component.html',
   styleUrl: './author-page.component.css'
 })
@@ -26,9 +27,7 @@ export class AuthorPageComponent {
       this.currentAuthor = author
       this.authorPageService.getAuthorBooks(this.id).subscribe((books: any) => {
         this.authorBooks = books
-        console.log(books)
       })
-      console.log(author)
     })
   }
 

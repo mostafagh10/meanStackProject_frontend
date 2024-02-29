@@ -20,12 +20,17 @@ export class UserServiceService {
       setTimeout(() => {  
             this.successmessage.next('');    
       }, 3000);
-      console.log(data);
   })
   }
 
   updateBookShelve(bookId:any,updateForm:any){
     this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,updateForm).subscribe((data) => {
+          window.location.reload();
+      })
+  }
+
+  updateBookRate(bookId:string,updateForm:any){
+    this.http.patch(`http://localhost:3000/user/updateRate/${bookId}`,updateForm).subscribe((data) => {
           console.log(data);
           window.location.reload();
       })
