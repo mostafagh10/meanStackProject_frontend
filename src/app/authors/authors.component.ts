@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthorService } from '../services/admin/author/author.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { AuthorsService } from '../services/authors/authors.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
 
@@ -13,13 +12,13 @@ import { RouterLink } from '@angular/router';
   styleUrl: './authors.component.css'
 })
 export class AuthorsComponent {
-constructor(private authorservice:AuthorService){};
+constructor(private authorservice:AuthorsService){};
 authors !: Array<any>;
 pagedAuthors: any[] = [];
 //pageSlice !: Array<any>;
 
 ngOnInit(){
-  this.authorservice.getAuthors().subscribe((data:any) => {
+  this.authorservice.getData().subscribe((data:any) => {
     this.authors = data;
     this.pagedAuthors = this.authors.slice(0, 3);
   })
