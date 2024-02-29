@@ -97,12 +97,31 @@
 }@else {
     <div class="text-center">
     <table id="customers">
-        <tr *ngFor="let userbook of userBooks; let $index=index">
+        <tr class="border-bottom border-2">
+            <th>Cover</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>AVG Rating</th>
+            <th>Shelve</th>
+        </tr>
+        <tr *ngFor="let userbook of userBooks; let $index=index" class="border-bottom border-2">
+            <td><img src="assets/images/test.jpg" style="width:75px; height: 75px" alt=""></td>
             <td>{{userbook.bookName}}</td>
             <td>
-                <span *ngFor="let star of [1, 2, 3, 4, 5]">
-                    <i class="fa" [class.fa-star]="star <= userbook.rate" [class.fa-star-o]="star > userbook.rate" [style.color]="star <= userbook.rate ? '#3b5d50' : 'gray'"></i>
-                </span>
+                <form (change)="updateBookRate(userbook.bookId)" [formGroup]="updateRateForm">
+                    <select formControlName="rate">
+                        <option selected> {{userbook.rate || 'N/A'}}</option>
+                        <option value="" disabled>--------</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </form>
+            </td>
+            <td>
+
             </td>
             <td>
                 {{userbook.shelve}}
@@ -124,16 +143,3 @@
     
 }
 
-
-
-<ul class="footer-nav">
-    <li class="footer-nav-item">
-      <a class="footer-nav-link" href="#">About Us</a>
-    </li>
-    <li class="footer-nav-item">
-      <a class="footer-nav-link" href="#">Contact Us</a>
-    </li>
-    <li class="footer-nav-item">
-      <a class="footer-nav-link" href="#">Policies</a>
-    </li>
-</ul>

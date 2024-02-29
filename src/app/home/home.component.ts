@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { UserServiceService } from '../services/user/user-service/user-service.service';
+import { BooksService } from '../services/books/books.service';
+import { CategoriesService } from '../services/categories/categories.service';
+import { AuthorsService } from '../services/authors/authors.service';
 
 @Component({
   selector: 'app-home',
@@ -29,15 +32,24 @@ export class HomeComponent {
   userId !:String;
   userBooks !: Array<any>;
   updateShelveForm: FormGroup;
+  updateRateForm: FormGroup;
   popularBooks !: Array<any>;
   popularCategories !: Array<any>;
   popularAuthors !: Array<any>;
 
-  constructor (private http:HttpClient,private userService:UserServiceService){
+  constructor (private http:HttpClient,
+    private userService:UserServiceService,
+    private bookService: BooksService,
+    private categoryService: CategoriesService,
+    private authorService: AuthorsService){
     this.updateShelveForm = new FormGroup({
       _id: new FormControl(''),
       shelve: new FormControl('')
     });
+    this.updateRateForm = new FormGroup({
+      _id: new FormControl(''),
+      rate: new FormControl('')
+    })
   };
   
   ngOnInit() {
@@ -71,8 +83,9 @@ export class HomeComponent {
         _id: this.userId
     });
 
-    
-
+    this.updateRateForm.patchValue({
+      _id: this.userId
+  });
 
   }
 
@@ -96,7 +109,11 @@ export class HomeComponent {
         this.userService.updateBookShelve(bookId,this.updateShelveForm.value);
     }
 
-  
+  updateBookRate(bookId: string){
+    console.log(this.updateRateForm.value);
+    console.log(bookId)
+    this.userService.updateBookRate(bookId, this.updateRateForm.value);
+  }
 
   
 }

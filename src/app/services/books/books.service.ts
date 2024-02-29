@@ -17,8 +17,9 @@ export class BooksService {
     return this.http.get('http://127.0.0.1:3000/book')
   }
 
- getOneBook(bookId: string){
+  getOneBook(bookId: string){
     const url = `http://127.0.0.1:3000/book/${bookId}`;
     return this.http.get(url);
   }
+  
 }
