@@ -42,6 +42,12 @@
 						routerLinkActive="active"
 						[routerLinkActiveOptions]="{exact: true}">Authors</a></li>
 				}
+				@if(this.role == 'user' && isLoggedIn){
+					<li>
+						<a class="nav-link" routerLink="userbooks"
+							routerLinkActive="active"
+							[routerLinkActiveOptions]="{exact: true}">User Books</a></li>
+				}
 				@if(this.role == 'admin' && isLoggedIn){
 					<li>
 						<a class="nav-link" routerLink="admin"
