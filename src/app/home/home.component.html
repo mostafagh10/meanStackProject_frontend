@@ -21,7 +21,7 @@
                 <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
                     <h2 class="mb-4 section-title">Popular Books</h2>
                     <p class="mb-4">Discover our popular books! From gripping thrillers to heartwarming tales, explore captivating stories and timeless classics. Find your next great read today!</p>
-                    <p><a href="shop.html" class="btn">Explore</a></p>
+                    <p><a href="/books" class="btn">Explore</a></p>
                 </div> 
                 <!-- End Column 1 -->
                 <!-- Start Column 2 -->
@@ -68,6 +68,34 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- Start categories section-->
+		 <div class="categories-section">
+			<div class="container">
+				<div class="row">
+               <!-- ----------------------------------------------     
+               add for each loop here !!!!!!!!!!!!!!!!!!!!!!
+               ---------------------------------------------- -->
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+						<div class="product-item-sm d-flex">
+							<div class="thumbnail">
+								<img src="" alt="Image" class="img-fluid">
+							</div>
+							<div class="pt-3">
+								<h3>Nordic Chair</h3>
+								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+								<p><a href="#">Read More</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+		<!-- End categories section -->
+
+
 
     <!-- Start Blog Section -->
 		<div class="blog-section">
@@ -116,9 +144,32 @@
 		<!-- End Blog Section -->	
 
 }@else {
-    <div  class="text-center">
-        <h3>personal page here !!!!!!!!</h3>
-    </div>
+    <table id="customers">
+        <tr *ngFor="let userbook of userBooks; let $index=index">
+            <td>{{userbook.bookName}}</td>
+            <td>{{userbook.bookId}}</td>
+            <td>
+                <span *ngFor="let star of [1, 2, 3, 4, 5]">
+                    <i class="fa" [class.fa-star]="star <= userbook.rate" [class.fa-star-o]="star > userbook.rate" [style.color]="star <= userbook.rate ? '#3b5d50' : 'gray'"></i>
+                </span>
+            </td>
+            <td>
+                {{userbook.shelve}}
+                <button *ngIf="!userbook.showForm" (click)="toggleUpdateForm($index)">Update Shelve</button>
+                <form *ngIf="userbook.showForm" [formGroup]="updateShelveForm" (ngSubmit)="handleShelveSubmit(userbook.bookId)">
+                    <input [value]="userId" type="hidden" formControlName="_id" />
+                    <select formControlName="shelve">
+                        <option value="" disabled selected hidden>Choose the shelve</option>
+                        <option value="read">Read</option>
+                        <option value="reading">Reading</option>
+                        <option value="want to read">Want to Read</option>
+                    </select>
+                    <button type="submit" style="margin-left: 10px;">Update Shelve</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    
 }
 
 
