@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { AuthorService } from '../services/admin/author/author.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-authors',
   standalone: true,
-  imports: [MatPaginatorModule],
+  imports: [MatPaginatorModule,RouterLink],
   templateUrl: './authors.component.html',
   styleUrl: './authors.component.css'
 })

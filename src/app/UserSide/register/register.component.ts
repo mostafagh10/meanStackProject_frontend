@@ -6,7 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Subject, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  errormessage!: String;
+  successmessage!: String;
+
   registerForm: FormGroup;
 
   ngOnInit(){
@@ -45,10 +49,17 @@ export class RegisterComponent {
   handlesubmit(){
     const formData = this.registerForm.value;
     console.log(formData);
-    this.http.post<any>('http://127.0.0.1:3000/user/register/', formData).subscribe({
+    this.http.post<any>('http://127.0.0.1:3000/user/register/', formData)
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
+    .subscribe({
       next: response => {
+        this.errormessage = '';
+        this.successmessage = 'your data saved successfully ..'
         console.log('Form data saved:', response);
-        this.router.navigate(['/']).then();
+        this.registerForm.reset();
+
       },
       error: error => {
         console.error('Error saving form data:', error);
@@ -65,6 +76,20 @@ export class RegisterComponent {
     } else {
       this.registerForm.get('confirmpassword')?.setErrors(null);
     }
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `${error.error.errorMessage}`;
+    }
+    // Set error message
+    this.errormessage = errorMessage;
+    this.successmessage = '';
+    console.error("the error : ",errorMessage);
+    return throwError(errorMessage);
   }
   
 
