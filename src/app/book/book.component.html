@@ -8,7 +8,7 @@
                   <div class="product-item">
                      <img src="assets/images/test.jpg" class="img-fluid product-thumbnail">
                      <h3 class="product-title"> {{ book.bookName }} </h3>                           
-                     <span class="icon-cross">
+                     <span class="icon-cross" (click)="addBook(book._id)">
                         <img src="assets/images/cross.svg" class="img-fluid">
                      </span>
                      <button type="button" (click)="view(book._id)" class="button button-a button-small">View</button>

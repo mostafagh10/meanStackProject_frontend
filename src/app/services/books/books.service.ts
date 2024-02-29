@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,5 +15,30 @@ export class BooksService {
  getOneBook(bookId: string){
     const url = `http://127.0.0.1:3000/book/${bookId}`;
     return this.http.get(url);
+  }
+
+  getMyBooks(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')! });
+
+    let options = { headers: headers };
+
+    const url = "http://127.0.0.1:3000/user/books/";
+
+    return this.http.post(url, null, options);
+  }
+
+  addBook(bookId: string){
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')! });
+
+    let options = { headers: headers };
+
+    const url = `http://127.0.0.1:3000/user/books/${bookId}`;
+
+    return this.http.post(url, null, options);
   }
 }
