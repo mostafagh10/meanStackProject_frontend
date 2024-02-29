@@ -51,11 +51,11 @@ export const routes: Routes = [
         title: "Categories"
     },
     { 
-        path: 'admin/login', 
+        path: 'admin-login', 
         component: AdminLoginComponent
     },
     { 
-        path: 'admin/addAdmin', 
+        path: 'admin-addAdmin', 
         component: AdminRegisterComponent
     },
     { 

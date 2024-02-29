@@ -16,13 +16,14 @@ export class AddbookComponent {
   categories: Array<any> = [];
   authors : Array<any> = [];
   bookForm: FormGroup;
+  image: any;
 
   constructor(private bookservice:BookService,private categoryservice:CategoryService,private authorservice:AuthorService){
     this.bookForm = new FormGroup({
       bookName: new FormControl(''),
       categoryId: new FormControl(''),
       authorId: new FormControl(''),
-      photo: new FormControl(''),
+      // photo: new FormControl(''),
     });
   };
 
@@ -37,9 +38,29 @@ export class AddbookComponent {
     })
   }
 
+  selectImage(event: any){
+    if (event.target.files.length > 0) {
+      this.image = event.target.files[0];
+    }
+  }
+
   addBook(){
-    console.log(this.bookForm.value);
-    this.bookservice.postBook(this.bookForm.value);
+    const bookImage = new FormData();    
+    bookImage.append('bookImageFile', this.image);
+
+    const { value } = this.bookForm;
+
+    for (const key in value) {
+      bookImage.append(key, value[key]);
+    }
+
+    // bookImage.append('bookData', this.bookForm.value);
+    // console.log(this.bookForm.value);
+    console.log(bookImage);
+    
+    this.bookservice.postBook(bookImage);
+    // this.bookservice.postBook(this.bookForm.value);
+    // this.bookservice.postBook({"bookImageFile": bookImage, "bookData": this.bookForm.value});
   }
 
 }

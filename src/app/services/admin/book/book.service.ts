@@ -16,7 +16,7 @@ export class BookService {
     this.http.post('http://localhost:3000/book', newBook)
       .subscribe((data: any) => {
         console.log(data);
-        window.location.reload();
+        // window.location.reload();
       });
   }
 

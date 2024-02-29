@@ -6,7 +6,7 @@
             <h1 class="modal-title fs-5" id="categoryEditModal">Add Book</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-<form [formGroup]="bookForm" (ngSubmit)="addBook()">
+<form [formGroup]="bookForm" (ngSubmit)="addBook()" enctype="multipart/form-data">
     <div class="modal-body">
         <label for="bookName">book name :</label>
         <input type="text" name="bookName" class="form-control" formControlName="bookName" >
@@ -25,7 +25,7 @@
             </option>
         </select>
         <label for="photo">upload photo :</label>
-        <input type="file" name="photo" class="form-control" formControlName="photo">
+        <input type="file" name="photo" class="form-control" (change)="selectImage($event)">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
