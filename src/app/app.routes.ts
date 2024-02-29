@@ -11,6 +11,7 @@ import { AdminRegisterComponent } from './admin/admin-register/admin-register.co
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { RegisterComponent } from './UserSide/register/register.component';
 import { LoginComponent } from './UserSide/login/login.component';
+import { CategoryDetailsComponent } from './category-details/category-details.component';
 
 export const routes: Routes = [
  
@@ -43,11 +44,16 @@ export const routes: Routes = [
         path: "books/:id",
         component: BookDetailComponent,
         title: "Book Detail"
-        },
+    },
     {
         path: "categories",
         component: CategoryComponent,
         title: "Categories"
+    },
+    {
+        path: "categories/:id",
+        component: CategoryDetailsComponent,
+        title: "Category Details"
     },
     {
         path: 'admin',

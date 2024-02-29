@@ -1,33 +1,37 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../services/categories/categories.service';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-category',
   standalone: true,
   imports: [RouterLink, RouterLinkActive,MatPaginatorModule],
   templateUrl: './category.component.html',
-  styleUrl: './category.component.css'
+  styleUrls: ['./category.component.css']
 })
-export class CategoryComponent {
+export class CategoryComponent implements OnInit {
 
-  
   data: any;
   pagedCategories: any[] = [];
-  constructor(private categoriesService: CategoriesService) { }
 
- ngOnInit(): void{
-     this.categoriesService.getData().subscribe(categories => {
-       this.data = categories;
-       this.pagedCategories = this.data.slice(0, 3);
-     });
- }
+  constructor(private categoriesService: CategoriesService, private router : Router) { }
 
- onPageChange(event: any): void {
-  const startIndex = event.pageIndex * event.pageSize;
-  const endIndex = startIndex + event.pageSize;
-  this.pagedCategories = this.data.slice(startIndex, endIndex);
-}
+  ngOnInit(): void {
+    this.categoriesService.getData().subscribe((categories: any) => {
+      this.data = categories;
+      this.pagedCategories = this.data.slice(0, 3);
+    });
+  }
 
+  onPageChange(event: PageEvent): void {
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+    this.pagedCategories = this.data.slice(startIndex, endIndex);
+  }
+
+  ReadMore(categoryID:any){
+    this.router.navigate(['categories', categoryID])
+  }
+  
 }

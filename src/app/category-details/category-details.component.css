@@ -1,0 +1,28 @@
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust as needed */
+}
+
+.product-item {
+    width: calc(33.33% - 20px); /* Adjust based on the number of items you want per row */
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card .thumbnail {
+    overflow: hidden;
+}
+
+.card .thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 1rem;
+}

@@ -11,4 +11,10 @@ export class CategoriesService {
   getData(){
        return this.http.get('http://127.0.0.1:3000/category')
    }
+
+   getCategoryDetails(id:any) {
+    return this.http.get(`http://127.0.0.1:3000/category/${id}`);
+  }
+
+
 }
