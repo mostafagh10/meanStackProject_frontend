@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [MatPaginatorModule,RouterLink],
   templateUrl: './authors.component.html',
   styleUrl: './authors.component.css'
+  
 })
 export class AuthorsComponent {
 constructor(private authorservice:AuthorsService){};
