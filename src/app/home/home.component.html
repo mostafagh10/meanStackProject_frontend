@@ -25,46 +25,15 @@
                 </div> 
                 <!-- End Column 1 -->
                 <!-- Start Column 2 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="https://prodimage.images-bn.com/pimages/9780618260591_p0_v2_s1200x630.jpg" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">The Two Towers: Lord of the Rings, Book 2</h3>
-                        <strong class="product-price">$37.00</strong>
-
-                        <span class="icon-cross">
-                            <img src="images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div> 
-                <!-- End Column 2 -->
-
-                <!-- Start Column 3 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="https://m.media-amazon.com/images/I/81YkqyaFVEL._AC_UF1000,1000_QL80_.jpg" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
-                        <strong class="product-price">$39.20</strong>
-
-                        <span class="icon-cross">
-                            <img src="images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 3 -->
-
-                <!-- Start Column 4 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8axnbfXTmH9PdS0x_wwcRc0aU0eH-LAYdkLqRyiCfog&s" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Rich Dad Poor Dad: What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!</h3>
-                        <strong class="product-price">$6.39</strong>
-                        <span class="icon-cross">
-                            <img src="images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 4 -->
-
+                @for(book of popularBooks ; track $index){
+                    <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                        <a class="product-item" [routerLink]="'/books/' + book.bookId">
+                            <img src="../../assets/images/author.png" class="img-fluid product-thumbnail">
+                            <h3 class="product-title">{{book.bookName}}</h3>
+                        </a>
+                    </div> 
+                    <!-- End Column 2 -->
+                }
             </div>
         </div>
     </div>
@@ -74,21 +43,19 @@
 		 <div class="categories-section">
 			<div class="container">
 				<div class="row">
-               <!-- ----------------------------------------------     
-               add for each loop here !!!!!!!!!!!!!!!!!!!!!!
-               ---------------------------------------------- -->
+                    @for(category of popularCategories ; track $index){
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="pt-3">
+                            <h3>{{category.categoryName}}</h3>
+                        </div>
 						<div class="product-item-sm d-flex">
-							<div class="thumbnail">
-								<img src="" alt="Image" class="img-fluid">
-							</div>
-							<div class="pt-3">
-								<h3>Nordic Chair</h3>
-								<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-								<p><a href="#">Read More</a></p>
+                            <div class="thumbnail">
+                                <img src="assets/images/test.jpg" alt="Image" class="img-fluid">
 							</div>
 						</div>
+                        <p><a [routerLink]="'/categories/' + category._id">Show More</a></p>
 					</div>
+                }
 				</div>
 			</div>
 		</div> 
@@ -109,34 +76,19 @@
 				</div>
 
 				<div class="row">
-
+                    @for(author of popularAuthors ; track $index){
 					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFNn6FcqJgnTCBDjX9vK_qRnle-dHO1Jp7uEEqISfNOm8bbjoW" alt="Image" class="img-fluid"></a>
+							<a [routerLink]="'/authors/' + author._id" class="post-thumbnail">
+                                <img src="assets/images/author.png" alt="Image" class="img-fluid">
+                            </a>
 							<div class="post-content-entry">
-								<h3><a href="#">Stephen King</a></h3>
+								<h3><a [routerLink]="'/authors/' + author._id" >{{author.firstName}}</a></h3>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS3bDP-AbnH7l2pjO-SwJkEFQu9dxDE6V8wyJ_5x_lfkVpTMA80" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">J. K. Rowling</a></h3>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-						<div class="post-entry">
-							<a href="#" class="post-thumbnail"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRZWkYKxRmvp29kWgKsvBWSBDrxWK_OpPEFs9yMP7doszUewZvH" alt="Image" class="img-fluid"></a>
-							<div class="post-content-entry">
-								<h3><a href="#">Margaret Atwood</a></h3>
-							</div>
-						</div>
-					</div>
-
+                }
+					
 				</div>
 			</div>
 		</div>

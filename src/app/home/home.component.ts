@@ -5,6 +5,9 @@ import { FooterComponent } from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import { BooksService } from '../services/books/books.service';
+import { CategoriesService } from '../services/categories/categories.service';
+import { AuthorsService } from '../services/authors/authors.service';
 
 @Component({
   selector: 'app-home',
@@ -28,8 +31,12 @@ export class HomeComponent {
   userId !:String;
   userBooks !: Array<any>;
   updateShelveForm: FormGroup;
+  popularBooks !: Array<any>;
+  popularCategories !: Array<any>;
+  popularAuthors !: Array<any>;
 
-  constructor (private http:HttpClient){
+
+  constructor (private http:HttpClient,private bookService: BooksService, private categoryService:CategoriesService, private authorService: AuthorsService ){
     this.updateShelveForm = new FormGroup({
       _id: new FormControl(''),
       shelve: new FormControl('')
@@ -38,15 +45,38 @@ export class HomeComponent {
   
   ngOnInit() {
     this.checkLoggedIn();
+
+    this.bookService.getData().subscribe((books: any) => {
+      this.popularBooks = books.slice(0, 3);
+      console.log(this.popularBooks);
+    });
+
+    this.categoryService.getData().subscribe((books: any) => {
+      this.popularCategories = books.slice(0, 3);
+      console.log(this.popularCategories);
+    });
+    
+    this.authorService.getData().subscribe((books: any) => {
+      this.popularAuthors = books.slice(0, 3);
+      console.log(this.popularAuthors);
+    });
+
     this.http.get(`http://localhost:3000/user/${this.userId}/books`).subscribe((data: any) => {
         this.userBooks = data["the books"];
         console.log('User Books:', this.userBooks);
     });
 
+    
+
+
     //to save userId in updateshelveform
     this.updateShelveForm.patchValue({
         _id: this.userId
     });
+
+    
+
+
   }
 
   checkLoggedIn() {
@@ -56,7 +86,7 @@ export class HomeComponent {
       const tokenParts = token.split('.');
       const payload = JSON.parse(atob(tokenParts[1]));
       this.userId = payload._id;
-      console.log('Current role:', this.userId);
+      console.log('USER_ID: ', this.userId);
     }
   }
   
@@ -65,13 +95,13 @@ export class HomeComponent {
   }
   
   
-    handleShelveSubmit(bookId:any){
-      console.log(this.updateShelveForm.value);
-        this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,this.updateShelveForm.value).subscribe((data) => {
-          console.log(data);
-          window.location.reload();
-        })
-    }
+  handleShelveSubmit(bookId:any){
+    console.log(this.updateShelveForm.value);
+      this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,this.updateShelveForm.value).subscribe((data) => {
+        console.log(data);
+        window.location.reload();
+      })
+  }
   
 
   
