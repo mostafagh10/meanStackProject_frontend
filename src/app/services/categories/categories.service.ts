@@ -12,13 +12,13 @@ export class CategoriesService {
   getData(){
     let name = this.route.snapshot.queryParams['name']
     if (name) {
-      return this.http.get(`http://127.0.0.1:3000/category?name=${name}`)  
+      return this.http.get(`https://mean-project.onrender.com/category?name=${name}`)  
     }
-    return this.http.get('http://127.0.0.1:3000/category')
+    return this.http.get('https://mean-project.onrender.com/category')
    }
 
    getCategoryDetails(id:any) {
-    return this.http.get(`http://127.0.0.1:3000/category/${id}`);
+    return this.http.get(`https://mean-project.onrender.com/category/${id}`);
   }
 
 

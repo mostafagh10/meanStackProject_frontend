@@ -12,13 +12,13 @@ export class BooksService {
  getData(){
     let name = this.route.snapshot.queryParams['name']
     if (name) {
-      return this.http.get(`http://127.0.0.1:3000/book?name=${name}`)
+      return this.http.get(`https://mean-project.onrender.com/book?name=${name}`)
     }
-    return this.http.get('http://127.0.0.1:3000/book')
+    return this.http.get('https://mean-project.onrender.com/book')
   }
 
   getOneBook(bookId: string){
-    const url = `http://127.0.0.1:3000/book/${bookId}`;
+    const url = `https://mean-project.onrender.com/book/${bookId}`;
     return this.http.get(url);
   }
   

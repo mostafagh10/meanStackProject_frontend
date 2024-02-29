@@ -11,7 +11,7 @@ export class UserServiceService {
   constructor(private http:HttpClient) { }
 
   addBookToUser(bookId : any,userId : any){
-    this.http.post(`http://localhost:3000/user/books/${bookId}`,{"_id":userId})
+    this.http.post(`https://mean-project.onrender.com/user/books/${bookId}`,{"_id":userId})
     .pipe(
       catchError(this.handleError.bind(this))
     )
@@ -24,13 +24,13 @@ export class UserServiceService {
   }
 
   updateBookShelve(bookId:any,updateForm:any){
-    this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,updateForm).subscribe((data) => {
+    this.http.patch(`https://mean-project.onrender.com/user/updateShelve/${bookId}`,updateForm).subscribe((data) => {
           window.location.reload();
       })
   }
 
   updateBookRate(bookId:string,updateForm:any){
-    this.http.patch(`http://localhost:3000/user/updateRate/${bookId}`,updateForm).subscribe((data) => {
+    this.http.patch(`https://mean-project.onrender.com/user/updateRate/${bookId}`,updateForm).subscribe((data) => {
           console.log(data);
           window.location.reload();
       })

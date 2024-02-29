@@ -20,7 +20,8 @@ export class BookDetailComponent {
       this.booksService
           .getOneBook(id)
           .subscribe((data) => {
-              this.bookDetails = data;          
+              this.bookDetails = data; 
+              console.log(this.bookDetails);         
             });
     }
 

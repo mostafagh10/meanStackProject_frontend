@@ -9,24 +9,24 @@ export class BookService {
   constructor(private http:HttpClient) { }
 
   getBooks() {
-    return this.http.get('http://localhost:3000/book');
+    return this.http.get('https://mean-project.onrender.com/book');
   }
 
   postBook(newBook: any) {
-    this.http.post('http://localhost:3000/book', newBook)
+    this.http.post('https://mean-project.onrender.com/book', newBook)
       .subscribe((data: any) => {
         window.location.reload();
       });
   }
 
   deleteBook(bookId: any) {
-    this.http.delete(`http://localhost:3000/book/${bookId}`)
+    this.http.delete(`https://mean-project.onrender.com/book/${bookId}`)
       .subscribe();
     window.location.reload();
   }
 
   editBook(bookId: any,book:any) {
-    this.http.put(`http://localhost:3000/book/${bookId}`, book)
+    this.http.put(`https://mean-project.onrender.com/book/${bookId}`, book)
       .subscribe();
     window.location.reload();
   }

@@ -11,11 +11,11 @@ export class AuthorService {
   constructor(private http: HttpClient) {}
 
   getAuthors() {
-    return this.http.get('http://localhost:3000/author');
+    return this.http.get('https://mean-project.onrender.com/author');
   }
 
   postAuthor(newauthor: any) {
-    this.http.post('http://localhost:3000/author', newauthor)
+    this.http.post('https://mean-project.onrender.com/author', newauthor)
       .pipe(
         catchError(this.handleError.bind(this))
       )
@@ -26,13 +26,13 @@ export class AuthorService {
   }
 
   deleteAuthor(authorId: any) {
-    this.http.delete(`http://localhost:3000/author/${authorId}`)
+    this.http.delete(`https://mean-project.onrender.com/author/${authorId}`)
       .subscribe((data) => console.log(data));
     window.location.reload();
   }
 
   editAuthor(authorId: any,author:any) {
-    this.http.patch(`http://localhost:3000/author/${authorId}`, author)
+    this.http.patch(`https://mean-project.onrender.com/author/${authorId}`, author)
     .pipe(
       catchError(this.handleError.bind(this))
     )

@@ -70,7 +70,7 @@ export class HomeComponent {
       console.log(this.popularAuthors);
     });
 
-    this.http.get(`http://localhost:3000/user/${this.userId}/books`).subscribe((data: any) => {
+    this.http.get(`https://mean-project.onrender.com/user/${this.userId}/books`).subscribe((data: any) => {
         this.userBooks = data["the books"];
         console.log('User Books:', this.userBooks);
     });

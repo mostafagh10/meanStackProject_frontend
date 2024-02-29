@@ -13,11 +13,11 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getCategories() {
-    return this.http.get('http://localhost:3000/category');
+    return this.http.get('https://mean-project.onrender.com/category');
   }
 
   addCategory(category: any) {
-    this.http.post('http://localhost:3000/category', category)
+    this.http.post('https://mean-project.onrender.com/category', category)
     .pipe(
       catchError(this.handleError.bind(this))
     )
@@ -28,13 +28,13 @@ export class CategoryService {
   }
 
   deleteCategory(categoryID: any) {
-    this.http.delete(`http://localhost:3000/category/${categoryID}`)
+    this.http.delete(`https://mean-project.onrender.com/category/${categoryID}`)
     .subscribe((data) => console.log(data));
     window.location.reload();
   }
 
   editCategory(category : any) {
-    this.http.patch(`http://localhost:3000/category/${category._id}`, category)
+    this.http.patch(`https://mean-project.onrender.com/category/${category._id}`, category)
     .pipe(
       catchError(this.handleError.bind(this))
     )

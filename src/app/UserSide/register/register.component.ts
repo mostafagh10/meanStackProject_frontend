@@ -49,7 +49,7 @@ export class RegisterComponent {
   handlesubmit(){
     const formData = this.registerForm.value;
     console.log(formData);
-    this.http.post<any>('http://127.0.0.1:3000/user/register/', formData)
+    this.http.post<any>('https://mean-project.onrender.com/user/register/', formData)
     .pipe(
       catchError(this.handleError.bind(this))
     )
