@@ -26,7 +26,12 @@ export class HeaderComponent {
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event) => {
-        this.currentUrl = event.url.substring(0, event.url.indexOf('?'));
+        if (event.url.indexOf('?') < 0) {
+          this.currentUrl = event.url  
+        }
+        else {
+          this.currentUrl = event.url.substring(0, event.url.indexOf('?'));
+        }
         const availableRoutes = ['/categories', '/authors', '/books'];
         this.disableForm = !availableRoutes.includes(this.currentUrl);
       });

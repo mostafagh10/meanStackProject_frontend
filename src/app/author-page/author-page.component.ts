@@ -13,13 +13,16 @@ export class AuthorPageComponent {
 
   currentAuthor !: any;
   authorBooks !: any;
+  currentUser !: any;
 
   constructor(private authorPageService: AuthorPageService) { }
 
   ngOnInit() {
     this.authorPageService.getAuthor(this.id).subscribe((author: any) => {
       let newDate = new Date(author.dateOfBirth)
-      author.newDate = newDate
+      author.newDate = newDate.getFullYear() 
+      + '/' + (newDate.getMonth()+1) 
+      + '/' + newDate.getDate()
       this.currentAuthor = author
       this.authorPageService.getAuthorBooks(this.id).subscribe((books: any) => {
         this.authorBooks = books
