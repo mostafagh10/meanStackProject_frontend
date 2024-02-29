@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthorComponent } from '../author/author.component';
 import { CategoryComponent } from '../category/category.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     AuthorComponent,
     CategoryComponent,
     RouterLink,
+    CommonModule,
     RouterLinkActive
   ],
   templateUrl: './header.component.html',
@@ -17,9 +20,38 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class HeaderComponent {
 
-  token: any = localStorage.getItem('token');
+  isAuth!: Boolean;
+  
+  constructor(private router: Router){}
+
+  ngOninit(){
+    const myToken = localStorage.getItem('token');
+    console.log(myToken);
+    if (myToken) {
+      this.isAuth = true;
+    } else {
+      this.isAuth = false;
+    }
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
+  }
+
+  test(){
+    const myToken = localStorage.getItem('token');
+    console.log(myToken);
+    if (myToken) {
+      this.isAuth = true;
+    } else {
+      this.isAuth = false;
+    }
+    console.log(this.isAuth);
+  }
   
   logOut() {
-    this.token = localStorage.removeItem('token');
+    localStorage.removeItem('token');
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 }

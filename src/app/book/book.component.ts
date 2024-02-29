@@ -25,6 +25,19 @@ export class BookComponent {
 
  view(id: number){
   this.routeObj.navigate(['books', id])
-}
+  }
  
+  addBook(bookId: string){
+    console.log(localStorage.getItem('token'));
+    this.booksService.addBook(bookId).subscribe(
+      res => {
+          alert('You\'ve added this book successfully')
+        },
+        err => {  
+          alert('You already added this book!')
+          console.log(err.message);
+      }
+  )
+}
+
 }
