@@ -1,3 +1,4 @@
+{{ this.checkLogin() }}
 <div class="register-div">
     <h4
       class="d-flex justify-content-center mb-4"
@@ -5,47 +6,17 @@
     >
       Create a new admin.
     </h4>
+
+    @if(errormessage){
+      <div class="alert alert-danger">{{errormessage}}</div>
+    }
+    @if(successmessage){
+      <div class="alert alert-success">{{successmessage}}</div>
+    }
   
     <form [formGroup]="registerForm" (ngSubmit)="handlesubmit()"
       class="register-form"
     >
-    <div class="mb-3">
-      <label for="name" class="form-label">First name</label>
-      <input
-        type="name"
-        class="form-control"
-        id="name"
-        aria-describedby="nameHelp"
-        formControlName="Firstname"
-      />
-      @if(registerForm.controls['Firstname'].invalid && registerForm.controls['Firstname'].touched){
-        <div id="nameHelp" class="form-text text-danger">
-            @if(registerForm.controls['Firstname'].errors?.['required']){
-                <small>First name is required.</small>
-            }
-        </div>
-      }
-    </div>
-    <div class="mb-3">
-      <label for="name" class="form-label">Last name</label>
-      <input
-        type="name"
-        class="form-control"
-        id="name"
-        aria-describedby="nameHelp"
-        formControlName="Lastname"
-      />
-      @if(registerForm.controls['Lastname'].invalid && registerForm.controls['Lastname'].touched){
-        <div id="nameHelp" class="form-text text-danger">
-            @if(registerForm.controls['Lastname'].errors?.['required']){
-                <small>Last name is required.</small>
-            }
-        </div>
-      }
-    </div>
-
-      
-
       <div class="mb-3">
         <label for="userName" class="form-label">Username</label>
         <input
@@ -110,7 +81,7 @@
           </div>
           }
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+      <button type="submit" class="btn btn-primary">
         Submit
       </button>
       <div class="d-flex justify-content-center mt-5">

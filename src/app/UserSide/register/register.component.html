@@ -5,6 +5,12 @@
     >
       Create an account.
     </h4>
+    @if(errormessage){
+      <div class="alert alert-danger">{{errormessage}}</div>
+    }
+    @if(successmessage){
+      <div class="alert alert-success">{{successmessage}}</div>
+    }
   
     <form [formGroup]="registerForm" (ngSubmit)="handlesubmit()"
       class="register-form"
