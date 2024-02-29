@@ -21,6 +21,7 @@ export class BookComponent {
   ngOnInit() {
     this.bookservice.getBooks().subscribe((data:any) => {
         this.books = data;
+        console.log(data);
     });
   }
 

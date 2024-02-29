@@ -21,7 +21,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarsFurni">
 			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-
+                @if(!isLoggedIn || this.role == 'user') { 
 				<li class="nav-item">
 					<a class="nav-link" routerLink=""
 						routerLinkActive="active"
@@ -41,20 +41,39 @@
 				<li><a class="nav-link" routerLink="authors"
 						routerLinkActive="active"
 						[routerLinkActiveOptions]="{exact: true}">Authors</a></li>
+				}
+				@if(this.role == 'admin' && isLoggedIn){
+					<li>
+						<a class="nav-link" routerLink="admin"
+							routerLinkActive="active"
+							[routerLinkActiveOptions]="{exact: true}">Admin Dahboard</a></li>
+
+					<li>
+						<a class="nav-link" routerLink="addAdmin"
+							routerLinkActive="active"
+							[routerLinkActiveOptions]="{exact: true}">Add Admin</a></li>
+				}
+				@if(!isLoggedIn){
 
 				<li><a class="nav-link" routerLink="register"
 						routerLinkActive="active"
 						[routerLinkActiveOptions]="{exact: true}">Register</a></li>
+				}
 
 			</ul>
 
+			
 			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				@if(!isLoggedIn){
 				<!-- <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li> -->
-				<li style="color: white;"><a class="nav-link" routerLink="login"><img width="40"
-							height="40" src="assets/images/login.png"></a></li>
+				<li style="color: white;"><a class="nav-link" routerLink="login">
+					<i class="fas fa-sign-in-alt"></i> Login</a></li>
+				}
+				@if(isLoggedIn){
 
-				<li style="color: white;"><a class="nav-link" (click)="logOut()"><img width="50"
-							height="40" src="assets/images/exit.png"></a></li>
+				<li class="logout" style="color: white;"><a class="nav-link" (click)="logOut()">
+					<i class="fas fa-sign-out-alt"></i> Logout</a></li>
+				}
 				
 							
 							<!-- <li><a class="nav-link" href="#"><img src="assets/images/logout.svg"></a></li> -->

@@ -6,6 +6,10 @@
    Login
   </h4>
 
+  @if(errormessage){
+    <div class="alert alert-danger">{{errormessage}}</div>
+  }
+
   <form
     class="login-form"
     #loginForm="ngForm"

@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
+import { LoginService } from '../../services/admin/login/login.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +18,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './admin-register.component.css',
 })
 export class AdminRegisterComponent {
+  errormessage!: String;
+  successmessage!: String;
   registerForm: FormGroup;
 
   ngOnInit(){
@@ -23,11 +27,10 @@ export class AdminRegisterComponent {
   }
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private loginservice:LoginService
     ) {
     this.registerForm = new FormGroup({
-      Firstname: new FormControl('', [Validators.required]),
-      Lastname: new FormControl('', [Validators.required]),
       userName: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\S+$/),
@@ -45,10 +48,16 @@ export class AdminRegisterComponent {
   handlesubmit(){
     console.log(this.registerForm.value);
     const formData = this.registerForm.value;
-    this.http.post<any>('http://localhost:3000/admin/', formData).subscribe({
+    this.http.post<any>('http://localhost:3000/admin/', formData)
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
+    .subscribe({
       next: response => {
+        this.errormessage = '';
+        this.successmessage = 'new admin saved successfully ..'
         console.log('Form data saved:', response);
-        this.router.navigate(['/admin']).then();
+        this.registerForm.reset();
       },
       error: error => {
         console.error('Error saving form data:', error);
@@ -64,6 +73,26 @@ export class AdminRegisterComponent {
       this.registerForm.get('confirmpassword')?.setErrors({ 'mismatch': true });
     } else {
       this.registerForm.get('confirmpassword')?.setErrors(null);
+    }
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `${error.error.errorMessage}`;
+    }
+    // Set error message
+    this.errormessage = errorMessage;
+    this.successmessage = '';
+    console.error("the error : ",errorMessage);
+    return throwError(errorMessage);
+  }
+
+  checkLogin() {
+    if(!this.loginservice.checkLoggedIn()) {
+      this.router.navigate(['/admin/login']).then();
     }
   }
   
