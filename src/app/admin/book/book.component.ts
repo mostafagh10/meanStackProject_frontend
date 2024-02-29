@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../services/admin/book/book.service';
-import { CategoryService } from '../../services/admin/category/category.service';
-import { AuthorService } from '../../services/admin/author/author.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { AddbookComponent } from './add-book/addbook.component';
 import { EditbookComponent } from './edit-book/editbook.component';

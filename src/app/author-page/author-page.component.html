@@ -1,10 +1,16 @@
-<p>author-page works!</p>
-<p>Author name : {{ this.currentAuthor.firstName }}</p>
-<br>
-<fieldset>
-    <legend>Author Books:</legend>
-    @for (book of authorBooks; track $index) {
-        <p>{{book.bookName}}</p>
-    }
-    
-</fieldset>
+<div class="container w-75 mx-auto border border-dark" >
+    <div class="row" style="height:130px">
+        <div class="col-3 border border-dark">
+            <img src="/assets/images/author.png" alt="" style="width: 100%; height: 100%">
+        </div>
+        <div class="col border border-dark">
+            <p>{{ this.currentAuthor.firstName }}</p>
+            <p>{{ this.currentAuthor.newDate.getFullYear() 
+            + '/' + this.currentAuthor.newDate.getMonth() 
+            + '/' + this.currentAuthor.newDate.getDay()}}</p>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
