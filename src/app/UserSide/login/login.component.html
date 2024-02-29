@@ -1,0 +1,67 @@
+<div class="login-div" style="width: 500px;">
+  <h4
+    class="d-flex justify-content-center mb-4"
+    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+  >
+   Login
+  </h4>
+
+  @if(errormessage){
+    <div class="alert alert-danger">{{errormessage}}</div>
+  }
+
+  <form
+    class="login-form"
+    #loginForm="ngForm"
+    (ngSubmit)="handleLogin(loginForm)"
+  >
+    <div class="mb-3">
+      <label for="userName" class="form-label" >Username</label>
+      <input
+        placeholder="username"
+        type="userName"
+        class="form-control"
+        id="userName"
+        aria-describedby="usernamehelp"
+        name="userName"
+        ngModel
+        required
+        #userName="ngModel"
+      />
+
+      <!-- @if(userName.invalid && userName.touched){
+        <div id="usernamehelp" class="form-text text-danger">
+            @if(userName.errors?.['required']){
+                <small>you can't leave username empty</small>
+            }
+        </div>
+      } -->
+      
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        placeholder="Password"
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        required
+        #password="ngModel"
+      />
+
+      <!-- @if(password.invalid && password.touched){
+        <div id="passwordHelp" class="form-text text-danger">
+            @if(password.errors?.['required']){
+                <small>password required !</small>
+            }
+        </div>
+        } -->
+        
+    </div>
+    <button type="submit" class="btn btn-primary login-button">
+      Login
+    </button>
+  </form>
+</div>

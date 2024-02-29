@@ -1,0 +1,85 @@
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
+	arial-label="Furni navigation bar">
+
+	<div class="container">
+		<a class="navbar-brand" href="index.html" routerLink="/"
+			routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Good
+			Reads<span>.</span></a>
+
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search"
+				aria-label="Search">
+		</form>
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarsFurni" aria-controls="navbarsFurni"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsFurni">
+			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                @if(!isLoggedIn || this.role == 'user') { 
+				<li class="nav-item">
+					<a class="nav-link" routerLink=""
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Home</a>
+				</li>
+
+				<li>
+					<a class="nav-link" routerLink="categories"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Categories</a></li>
+
+				<li>
+					<a class="nav-link" routerLink="books"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Books</a></li>
+
+				<li><a class="nav-link" routerLink="authors"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Authors</a></li>
+				}
+				@if(this.role == 'admin' && isLoggedIn){
+					<li>
+						<a class="nav-link" routerLink="admin"
+							routerLinkActive="active"
+							[routerLinkActiveOptions]="{exact: true}">Admin Dahboard</a></li>
+
+					<li>
+						<a class="nav-link" routerLink="addAdmin"
+							routerLinkActive="active"
+							[routerLinkActiveOptions]="{exact: true}">Add Admin</a></li>
+				}
+				@if(!isLoggedIn){
+
+				<li><a class="nav-link" routerLink="register"
+						routerLinkActive="active"
+						[routerLinkActiveOptions]="{exact: true}">Register</a></li>
+				}
+
+			</ul>
+
+			
+			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				@if(!isLoggedIn){
+				<!-- <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li> -->
+				<li style="color: white;"><a class="nav-link" routerLink="login">
+					<i class="fas fa-sign-in-alt"></i> Login</a></li>
+				}
+				@if(isLoggedIn){
+
+				<li class="logout" style="color: white;"><a class="nav-link" (click)="logOut()">
+					<i class="fas fa-sign-out-alt"></i> Logout</a></li>
+				}
+				
+							
+							<!-- <li><a class="nav-link" href="#"><img src="assets/images/logout.svg"></a></li> -->
+			</ul>
+		</div>
+	</div>
+
+</nav>
+<!-- End Header/Navigation -->
