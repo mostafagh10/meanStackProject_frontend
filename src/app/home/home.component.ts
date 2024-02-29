@@ -5,6 +5,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import { UserServiceService } from '../services/user/user-service/user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ export class HomeComponent {
   userBooks !: Array<any>;
   updateShelveForm: FormGroup;
 
-  constructor (private http:HttpClient){
+  constructor (private http:HttpClient,private userService:UserServiceService){
     this.updateShelveForm = new FormGroup({
       _id: new FormControl(''),
       shelve: new FormControl('')
@@ -67,10 +68,7 @@ export class HomeComponent {
   
     handleShelveSubmit(bookId:any){
       console.log(this.updateShelveForm.value);
-        this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,this.updateShelveForm.value).subscribe((data) => {
-          console.log(data);
-          window.location.reload();
-        })
+        this.userService.updateBookShelve(bookId,this.updateShelveForm.value);
     }
   
 
