@@ -32,9 +32,11 @@
 						</div>
 					</div>
 
+					{{bookDetails.bookInfo.photo}}
 					<div class="col-lg-5">
 						<div class="img-wrap">
-							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+							<img src="/api/book/book-image/{{bookDetails.bookInfo.photo}}" alt="Image" class="img-fluid">
+							<!-- <img [src]+="/book-image/"bookDetails.bookInfo.photo alt="Image" class="img-fluid"> -->
 						</div>
 					</div>
 

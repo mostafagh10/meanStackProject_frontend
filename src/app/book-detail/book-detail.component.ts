@@ -11,9 +11,11 @@ import { Book } from '../User/Interfaces/Book';
   styleUrl: './book-detail.component.css'
 })
 export class BookDetailComponent {
-   
+  
   bookDetails !: any;
-  constructor(private acRoute: ActivatedRoute, private booksService: BooksService){} 
+  constructor(private acRoute: ActivatedRoute, private booksService: BooksService){
+    // this.src = "127.0.0.1:3000"
+  } 
   
   ngOnInit(){
     const id = this.acRoute.snapshot.params['id'];
