@@ -18,6 +18,8 @@ export class AuthorPageComponent {
 
   ngOnInit() {
     this.authorPageService.getAuthor(this.id).subscribe((author: any) => {
+      let newDate = new Date(author.dateOfBirth)
+      author.newDate = newDate
       this.currentAuthor = author
       this.authorPageService.getAuthorBooks(this.id).subscribe((books: any) => {
         this.authorBooks = books

@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CategoryComponent } from '../category/category.component';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthorsComponent } from '../authors/authors.component';
-
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,7 +20,17 @@ export class HeaderComponent {
   isLoggedIn: boolean = false;
   token: any = localStorage.getItem('token');
   role !: String;
-  constructor(private router: Router,private cdRef: ChangeDetectorRef){}
+  currentUrl!: string;
+  disableForm : boolean = false;
+  constructor(private router: Router,private cdRef: ChangeDetectorRef){
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this.currentUrl = event.url.substring(0, event.url.indexOf('?'));
+        const availableRoutes = ['/categories', '/authors', '/books'];
+        this.disableForm = !availableRoutes.includes(this.currentUrl);
+      });
+  }
 
   ngOnInit() {
     this.checkLoggedIn();
