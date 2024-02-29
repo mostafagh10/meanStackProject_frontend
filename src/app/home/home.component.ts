@@ -5,9 +5,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-import { BooksService } from '../services/books/books.service';
-import { CategoriesService } from '../services/categories/categories.service';
-import { AuthorsService } from '../services/authors/authors.service';
+import { UserServiceService } from '../services/user/user-service/user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -35,8 +33,7 @@ export class HomeComponent {
   popularCategories !: Array<any>;
   popularAuthors !: Array<any>;
 
-
-  constructor (private http:HttpClient,private bookService: BooksService, private categoryService:CategoriesService, private authorService: AuthorsService ){
+  constructor (private http:HttpClient,private userService:UserServiceService){
     this.updateShelveForm = new FormGroup({
       _id: new FormControl(''),
       shelve: new FormControl('')
@@ -94,14 +91,11 @@ export class HomeComponent {
     this.userBooks[index].showForm = !this.userBooks[index].showForm;
   }
   
-  
   handleShelveSubmit(bookId:any){
-    console.log(this.updateShelveForm.value);
-      this.http.patch(`http://localhost:3000/user/updateShelve/${bookId}`,this.updateShelveForm.value).subscribe((data) => {
-        console.log(data);
-        window.location.reload();
-      })
-  }
+      console.log(this.updateShelveForm.value);
+        this.userService.updateBookShelve(bookId,this.updateShelveForm.value);
+    }
+
   
 
   
