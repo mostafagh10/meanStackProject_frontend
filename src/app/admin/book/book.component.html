@@ -15,8 +15,8 @@ data-bs-target="#addBookModal"><i class="fas fa-plus" style="font-size: 20px"></
         <tr class="text-center">
             <td>{{$index+1}}</td>
             <td>{{book.bookName}}</td>
-            <td>{{book.categoryId._id}}</td>
-            <td>{{book.authorId._id}}</td>
+            <td>{{book.categoryId}}</td>
+            <td>{{book.authorId}}</td>
             <td>{{book.photo}}</td>
             <td class="d-flex justify-content-evenly">
                 <button class="btn btn-danger" (click)="deleteBook(book._id)" ><i class="fas fa-trash-can"></i></button>
