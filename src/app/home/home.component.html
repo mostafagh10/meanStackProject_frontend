@@ -33,23 +33,17 @@
                 
         <td>{{book.bookId.authorId.firstName}}</td>
         <td>
-                    <select name="cars" id="cars"> <!-- [(ngModel)]="value" -->
-                        @if (book.rate == 0) {
-                            <option value="volvo">Not rated yet</option>
-                        }@else{
-                            @for (rate of ratingValues; track $index) {
-                                @if (book.rate === rate ) {
-                                    <option [value]="rate" selected> {{rate}}</option>
-                                    <option value="" disabled>--------</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                }
-                            }
-                        }
-                    </select>
+             <select (change)="updateBookRate($event, book.bookId._id)">
+
+                <option selected> {{book.rate || 'N/A'}}</option>
+                <option value="" disabled>--------</option>
+
+                @for (rate of ratingValues; track $index) {
+                    <option>
+                        {{rate}}
+                    </option>
+                   }
+              </select>
                                 
         </td>
 
@@ -58,14 +52,14 @@
         </td>
 
             <td>
-                <select name="cars" id="cars">
+                <select name="shelves" id="shelves" (change)="updateBookShelve($event, book.bookId._id)">
                     @for (shelve of shelveValues; track $index) {
                         @if (book.shelve === shelve ) {
                             <option [value]="shelve" selected> {{shelve}}</option>
                             <option value="" disabled>--------</option>
-                            <option value="1">read</option>
-                            <option value="1">reading</option>
-                            <option value="1">want to read</option>
+                            <option value="read">read</option>
+                            <option value="reading">reading</option>
+                            <option value="want to read">want to read</option>
                         }
                     }
                 </select>

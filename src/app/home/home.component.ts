@@ -20,20 +20,42 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class HomeComponent {
-
-  ratingValues = [1, 2, 3, 4, 5];
   
+  isLoggedIn: boolean = false;
+  token: any = localStorage.getItem('token'); 
   shelveValues = ["read", "reading", "want to read"];
-
+  ratingValues = [1, 2, 3, 4, 5];
   myBooks: any;
+  targetBookId: any;
   value: any;
-  // user/updateRate/65d73f4bd592d547c2a35f34
 
   constructor(private booksService: BooksService, private routeObj : Router) { }
 
-  isLoggedIn: boolean = false;
-  token: any = localStorage.getItem('token');
-  
+  updateBookRate(event: any, bookId: string){
+    console.log(event.target.value, bookId);
+    this.booksService.updateBookRate(event.target.value, bookId).subscribe(
+      res => {
+        console.log(res);
+        },
+        err => {  
+          alert(`Something went wrong!  ${err}`)
+      })
+  }
+
+  updateBookShelve(event: any, bookId: string){
+    console.log(event.target.value, bookId);
+    this.booksService.updateBookShelve(event.target.value, bookId).subscribe(
+      res => {
+        console.log(res);
+        },
+        err => {  
+          console.log(err);
+          
+          alert(`Something went wrong!  ${err}`)
+      })
+  }
+
+
   ngOnInit() {
     this.checkLoggedIn();
 
@@ -45,8 +67,7 @@ export class HomeComponent {
         err => {  
           alert('You Got no books!')
           console.log(err.message);
-      }
-  )
+      })
   }
 
   checkLoggedIn() {

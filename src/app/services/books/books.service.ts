@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class BooksService {
 
  constructor(private http: HttpClient) { }
@@ -21,24 +23,37 @@ export class BooksService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')! });
-
     let options = { headers: headers };
-
     const url = "http://127.0.0.1:3000/user/books/";
-
     return this.http.post(url, null, options);
   }
 
   addBook(bookId: string){
-
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')! });
+    let options = { headers: headers };
+    const url = `http://127.0.0.1:3000/user/books/${bookId}`;
+    return this.http.post(url, null, options);
+  }
 
+  updateBookRate(rate: number, bookId: string){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')! });
     let options = { headers: headers };
 
-    const url = `http://127.0.0.1:3000/user/books/${bookId}`;
+    const url = `http://127.0.0.1:3000/user/updateRate/${bookId}`;
+    return this.http.patch(url, {"rate": rate}, options);
+  }
 
-    return this.http.post(url, null, options);
+  updateBookShelve(shelve: string, bookId: string){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')! });
+    let options = { headers: headers };
+
+    const url = `http://127.0.0.1:3000/user/updateShelve/${bookId}`;
+    return this.http.patch(url, {"shelve": shelve}, options);
   }
 }
