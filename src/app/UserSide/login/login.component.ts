@@ -32,7 +32,7 @@ export class LoginComponent {
   handleLogin(form: any) {
     const formData = form.value;
     this.http
-      .post<any>('http://127.0.0.1:3000/user/login', formData)
+      .post<any>('https://mean-project.onrender.com/user/login', formData)
       .pipe(
         catchError(this.handleError.bind(this))
       )

@@ -9,10 +9,10 @@ export class AuthorPageService {
   constructor(private http:HttpClient) { }
 
   getAuthor(id: string) {
-    return this.http.get(`http://localhost:3000/author/${id}`)
+    return this.http.get(`https://mean-project.onrender.com/author/${id}`)
   }
 
   getAuthorBooks(id: string) {
-    return this.http.get(`http://localhost:3000/author/${id}/authorbooks`)
+    return this.http.get(`https://mean-project.onrender.com/author/${id}/authorbooks`)
   }
 }

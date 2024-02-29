@@ -34,7 +34,7 @@ export class AdminLoginComponent {
   handleLogin(form: any) {
     const formData = form.value;
     this.http
-      .post<any>('http://127.0.0.1:3000/admin/login', formData)
+      .post<any>('https://mean-project.onrender.com/admin/login', formData)
       .pipe(
         catchError(this.handleError.bind(this))
       )

@@ -13,9 +13,9 @@ export class AuthorsService {
     let name = this.route.snapshot.queryParams['name']
     if (name) {
       return this.http.get
-    (`http://127.0.0.1:3000/author?name=${name}`)
+    (`https://mean-project.onrender.com/author?name=${name}`)
     }
     return this.http.get
-    (`http://127.0.0.1:3000/author`)
+    (`https://mean-project.onrender.com/author`)
    }
 }

@@ -27,7 +27,7 @@
                 <!-- Start Column 2 -->
                 @for(book of popularBooks ; track $index){
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                        <a class="product-item" [routerLink]="'/books/' + book.bookId">
+                        <a class="product-item" [routerLink]="'/books/' + book._id">
                             <img src="../../assets/images/author.png" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{book.bookName}}</h3>
                         </a>
@@ -98,11 +98,10 @@
     <div class="text-center">
     <table id="customers">
         <tr class="border-bottom border-2">
-            <th>Cover</th>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>AVG Rating</th>
-            <th>Shelve</th>
+            <th class="text-center">Cover</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Rating</th>
+            <th class="text-center">Shelve</th>
         </tr>
         <tr *ngFor="let userbook of userBooks; let $index=index" class="border-bottom border-2">
             <td><img src="assets/images/test.jpg" style="width:75px; height: 75px" alt=""></td>
@@ -119,9 +118,6 @@
                         <option>5</option>
                     </select>
                 </form>
-            </td>
-            <td>
-
             </td>
             <td>
                 {{userbook.shelve}}

@@ -1,64 +1,18 @@
-		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section">
-			<div class="container">
-				<div class="row justify-content-between align-items-center">
-					<div class="col-lg-6">
-						<h2 class="section-title"> {{bookDetails.bookInfo.bookName}} </h2>
-						
-						<div class="row my-5">
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<!-- <div class="icon">
-										<img src="images/truck.svg" alt="Image" class="imf-fluid">
-									</div> -->
-									<h2>By : {{bookDetails.bookInfo.authorId.firstName}}</h2>
-									<p></p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<h3>Category : {{bookDetails.bookInfo.categoryId.categoryName}} </h3>
-									<p></p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<h3>Ratings : {{bookDetails.averageRating}} </h3>
-									<p></p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-5">
-						<div class="img-wrap">
-							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
-						</div>
-					</div>
-
-				</div>
-			</div>
+<div class="container">
+	<div class="row" style="align-items: center; text-align: center; margin-top: 10px;">
+		<div class="col-md-6 col-sm-12">
+			<img src="../../assets/images/test.jpg" width="300" height="300" />
 		</div>
-		<!-- End Why Choose Us Section -->
-	
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">User</th>
-					<th scope="col">Review</th>
-				</tr>
-			</thead>
-			<tbody>
-				@for (book of bookDetails.reviews; track $index) {
-					<tr>
-						
-						<td rowspan="">{{book.user}}</td>
-						@for (singleReview of book.reviews; track $index) {
-							<td>{{singleReview}}</td>
-						}
-						</tr>
-				}
-			</tbody>
-		</table>
+		<div class="col-md-6 col-sm-12">
+			<h5>
+				Book Name : {{bookDetails.book.bookName}}
+			</h5>
+			<h5>
+				By : {{bookDetails.book.authorName}}
+			</h5>
+			<h5>
+				Category : {{bookDetails.book.categoryName}}
+			</h5>
+		</div>
+	</div>
+</div>

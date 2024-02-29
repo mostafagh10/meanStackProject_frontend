@@ -48,7 +48,7 @@ export class AdminRegisterComponent {
   handlesubmit(){
     console.log(this.registerForm.value);
     const formData = this.registerForm.value;
-    this.http.post<any>('http://localhost:3000/admin/', formData)
+    this.http.post<any>('https://mean-project.onrender.com/admin/', formData)
     .pipe(
       catchError(this.handleError.bind(this))
     )
