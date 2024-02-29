@@ -53,20 +53,16 @@ addToList(bookId : any){
     const tokenParts = token.split('.');
     const payload = JSON.parse(atob(tokenParts[1]));
     this.userId = payload._id;
-    console.log('payload : ',payload);
-    console.log('Current userId:', this.userId);
   }
   
   if(this.isLoggedIn){
   this.userService.addBookToUser(bookId , this.userId);
   this.userService.errormessage.subscribe((errorMessage => {
     this.addBookErrorMessage = errorMessage;
-    console.log(errorMessage);
   }))
 
   this.userService.successmessage.subscribe((successMessage => {
     this.addBookSuccessMessage = successMessage;
-    console.log(successMessage);
   }))
 }else{
   this.addBookErrorMessage = 'please login to add book in your list';

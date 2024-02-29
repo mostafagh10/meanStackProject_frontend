@@ -15,7 +15,6 @@ export class AuthorsComponent {
 constructor(private authorservice:AuthorsService){};
 authors !: Array<any>;
 pagedAuthors: any[] = [];
-//pageSlice !: Array<any>;
 
 ngOnInit(){
   this.authorservice.getData().subscribe((data:any) => {

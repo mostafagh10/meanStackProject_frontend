@@ -26,7 +26,6 @@ export class AddAuthorComponent {
     this.authorService.postAuthor(this.authorForm.value);
     this.authorService.errormessage.subscribe(errorMessage => {
       this.authorerrormessage = errorMessage;
-      console.log(errorMessage);
     });
   }
 

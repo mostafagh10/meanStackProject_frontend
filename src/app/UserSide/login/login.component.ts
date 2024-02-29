@@ -26,7 +26,6 @@ export class LoginComponent {
 
   checkLoggedIn() {
     const token = localStorage.getItem('token');
-    console.log(token);
     this.isLoggedIn = !!token;
   }
 
@@ -40,19 +39,16 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           this.errormessage = '';
-          console.log('Form data saved:', response.token);
           
           localStorage.setItem('token', response.token);
           this.checkLoggedIn();
           
-          console.log('logged In  ----> ' + this.isLoggedIn);
           
           const jwtToken = response.token;
           const tokenParts = jwtToken.split('.');
           const payload = JSON.parse(atob(tokenParts[1]));
           const id = payload._id;
           
-          console.log('User ID:', id);
           
           this.router.navigate(['/']).then(() => {
             window.location.reload();
@@ -71,9 +67,7 @@ export class LoginComponent {
     } else {
       errorMessage = `${error.error.errorMessage}`;
     }
-    // Set error message
     this.errormessage = errorMessage;
-    console.error("the error : ",errorMessage);
     return throwError(errorMessage);
   }
 

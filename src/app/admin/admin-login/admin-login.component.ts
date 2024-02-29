@@ -14,44 +14,6 @@ import { catchError, throwError } from 'rxjs';
   styleUrl: './admin-login.component.css',
 })
 export class AdminLoginComponent {
-  // constructor(
-  //   private http: HttpClient,
-  //   private router: Router,
-  //   private cdRef: ChangeDetectorRef
-  // ) {}
-
-  // isLoggedIn: boolean = false;
-
-  // checkLoggedIn() {
-  //   const token = localStorage.getItem('token');
-  //   console.log(token);
-  //   this.isLoggedIn = !!token;
-  // }
-
-  // handleLogin(form: any) {
-  //   const formData = form.value;
-  //   this.http
-  //     .post<any>('http://localhost:3000/admin/login', formData)
-  //     .subscribe({
-  //       next: (response) => {
-  //         console.log('Form data saved:', response.token);
-  //         localStorage.setItem('token', response.token);
-  //         this.checkLoggedIn();
-  //         console.log('logged In  ----> ' + this.isLoggedIn);
-  //         const jwtToken = response.token;
-  //         const tokenParts = jwtToken.split('.');
-  //         const payload = JSON.parse(atob(tokenParts[1]));
-  //         const id = payload.adminId;
-  //         console.log('Admin ID:', id);
-  //         this.router.navigate(['/admin']).then(() => {
-  //           window.location.reload();
-  //         });
-  //       },
-  //       error: (error) => {
-  //         console.error('Error saving form data:', error);
-  //       },
-  //     });
-  // }
 
   constructor(
     private http: HttpClient,
@@ -79,19 +41,16 @@ export class AdminLoginComponent {
       .subscribe({
         next: (response) => {
           this.errormessage = '';
-          console.log('Form data saved:', response.token);
           
           localStorage.setItem('token', response.token);
           this.checkLoggedIn();
           
-          console.log('logged In  ----> ' + this.isLoggedIn);
           
           const jwtToken = response.token;
           const tokenParts = jwtToken.split('.');
           const payload = JSON.parse(atob(tokenParts[1]));
           const id = payload._id;
           
-          console.log('User ID:', id);
           
           this.router.navigate(['/admin']).then(() => {
             window.location.reload();
