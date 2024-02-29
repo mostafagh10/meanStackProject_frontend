@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,8 @@ export class LoginComponent {
   ) {}
 
   isLoggedIn: boolean = false;
+  errormessage!: String;
+
 
   checkLoggedIn() {
     const token = localStorage.getItem('token');
@@ -31,8 +34,12 @@ export class LoginComponent {
     const formData = form.value;
     this.http
       .post<any>('http://127.0.0.1:3000/user/login', formData)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      )
       .subscribe({
         next: (response) => {
+          this.errormessage = '';
           console.log('Form data saved:', response.token);
           
           localStorage.setItem('token', response.token);
@@ -56,4 +63,18 @@ export class LoginComponent {
         },
       });
   }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `${error.error.errorMessage}`;
+    }
+    // Set error message
+    this.errormessage = errorMessage;
+    console.error("the error : ",errorMessage);
+    return throwError(errorMessage);
+  }
+
 }

@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AuthorComponent } from './author/author.component';
 import { CategoryComponent } from './category/category.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BookComponent } from './book/book.component';
@@ -32,7 +31,7 @@ export const routes: Routes = [
     },
     {
         path: "authors",
-        component: AuthorComponent,
+        component: AuthorsComponent,
         title: "Authors"
     },
     {
@@ -50,27 +49,18 @@ export const routes: Routes = [
         component: CategoryComponent,
         title: "Categories"
     },
-    { 
-        path: 'admin/login', 
-        component: AdminLoginComponent
-    },
-    { 
-        path: 'admin/addAdmin', 
-        component: AdminRegisterComponent
-    },
-    { 
-        path: 'authors',
-        component: AuthorsComponent 
-    },
     {
         path: 'admin',
         component : AdminComponent,
         title : "Admin"
     },
-    {
-        path: 'admin/authors',
-        component: AuthorComponent,
-        title: 'authors management'
+    { 
+        path: 'admin/login', 
+        component: AdminLoginComponent
+    },
+    { 
+        path: 'addAdmin', 
+        component: AdminRegisterComponent
     },
     {
         path: 'admin/book',
