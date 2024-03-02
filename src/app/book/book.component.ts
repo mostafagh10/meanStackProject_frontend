@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../services/books/books.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-book',
@@ -15,11 +16,17 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class BookComponent {
 
   data: any;
-  constructor(private booksService: BooksService, private routeObj : Router) { }
+  constructor(private booksService: BooksService, private routeObj : Router, private http: HttpClient) { }
 
  ngOnInit(): void{
-     this.booksService.getData().subscribe(books => {
-       this.data = books
+     this.booksService.getData().subscribe((books: any) => {
+      books.forEach((book:any) => {
+        this.http.get(`http://127.0.0.1:3000/book/book-image/${book.photo}`,
+         { responseType: 'blob' }).subscribe((image)=>{
+          book.photo = URL.createObjectURL(image);
+         });
+         this.data = books;
+      });
      });
  }
 
